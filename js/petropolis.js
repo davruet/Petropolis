@@ -21,6 +21,39 @@ function bounce(t) {
   return l;
 }
 
+var mapStates = [];
+
+mapStates.push({
+  name: "Refinery",
+  transitionAction: function() {
+    var pan = ol.animation.pan({
+      duration: 1000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
+    view.setZoom(16);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+/** Calumet Basin State **/
+mapStates.push({
+  name: "Calumet Basin",
+  transitionAction: function() {
+    var pan = ol.animation.pan({
+      duration: 1000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(industrialzone);
+    view.setZoom(13);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+
+
 var legendIcons = [];
 var prefix = "icons/";
 legendIcons.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
@@ -70,11 +103,18 @@ $(document).ready(function(){
     });
 });
 
+// init map nav bar states
+
+mapStates.map(function (mapState){
+  
+});
+
 
 $(".nav a").on("click", function(){
    $(".nav").find(".active").removeClass("active");
    $(this).parent().addClass("active");
 });
+
 
 /*
 legend.expanded = false;
@@ -97,7 +137,6 @@ function elastic(t) {
 
 var mapExtent = ol.proj.transformExtent([-89.15,41.215,-86.4,42.37], 'EPSG:4326', 'EPSG:3857');
 var NAExtent = ol.proj.transformExtent([-167.2764,5.4995,-52.2330,83.1621], 'EPSG:4326', 'EPSG:3857');
-var refinery = ol.proj.fromLonLat([-87.4820, 41.66950]);
 var toxicwaste = ol.proj.fromLonLat([-87.5439, 41.7049]);
 var industrialzone = ol.proj.fromLonLat([-87.534, 41.68432]);
 var joliet = ol.proj.fromLonLat([-88.194040, 41.490778]);
@@ -175,24 +214,24 @@ var iconStyle5 = new ol.style.Style({
 
 
 
-var layers = [];
+var tiles = []; // renamed from layers 
 
 
-layers[0] = new ol.layer.Tile({
+tiles[0] = new ol.layer.Tile({
     opacity: 0.8,
     source: new ol.source.XYZ({
     url: "tiles2/{z}/{x}/{y}.png"}),
             maxResolution: 8000
 });
 
-layers[1] = new ol.layer.Tile({
+tiles[1] = new ol.layer.Tile({
     source: new ol.source.Stamen({layer: 'watercolor'}),
             extent: mapExtent,
             minResolution: 0,
             maxResolution: 160
 });
 
-layers[2] = new ol.layer.Tile({
+tiles[2] = new ol.layer.Tile({
     opacity: 0.8,
     source: new ol.source.XYZ({
     url: "tiles/{z}/{x}/{y}.png"}),
@@ -201,7 +240,7 @@ layers[2] = new ol.layer.Tile({
             maxResolution: 160
 });
 
-layers[3] = new ol.layer.Tile({
+tiles[3] = new ol.layer.Tile({
     source: new ol.source.Stamen({layer: 'toner-lite'})
 });
 
@@ -503,7 +542,7 @@ var map = new ol.Map({
     new ol.control.FullScreen()
  ]),
 
-    layers: [ layers[3], burnoff, energy[9], energy[10], energy[1], layers[1], layers[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+    layers: [ tiles[3], burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
 
   // Improve user experience by loading tiles while animating. Will make
   // animations stutter on mobile or slow devices.
