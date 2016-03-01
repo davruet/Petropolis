@@ -49,6 +49,7 @@ function elastic(t) {
 
 var mapExtent = ol.proj.transformExtent([-89.15,41.215,-86.4,42.37], 'EPSG:4326', 'EPSG:3857');
 var NAExtent = ol.proj.transformExtent([-167.2764,5.4995,-52.2330,83.1621], 'EPSG:4326', 'EPSG:3857');
+var refinery = ol.proj.fromLonLat([-87.4820, 41.66950]);
 var toxicwaste = ol.proj.fromLonLat([-87.5439, 41.7049]);
 var industrialzone = ol.proj.fromLonLat([-87.534, 41.68432]);
 var joliet = ol.proj.fromLonLat([-88.194040, 41.490778]);
