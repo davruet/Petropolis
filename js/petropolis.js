@@ -21,94 +21,6 @@ function bounce(t) {
   return l;
 }
 
-var mapStates = [];
-
-mapStates.push({
-  name: "Refinery",
-  transitionAction: function() {
-    var pan = ol.animation.pan({
-      duration: 1000,
-      source: /** @type {ol.Coordinate} */ (view.getCenter())
-    });
-    map.beforeRender(pan);
-    view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
-    view.setZoom(16);
-  },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
-});
-
-/** Calumet Basin State **/
-mapStates.push({
-  name: "Calumet Basin",
-  transitionAction: function() {
-    var pan = ol.animation.pan({
-      duration: 1000,
-      source: /** @type {ol.Coordinate} */ (view.getCenter())
-    });
-    map.beforeRender(pan);
-    view.setCenter(industrialzone);
-    view.setZoom(13);
-  },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
-});
-
-
-
-var legendIcons = [];
-var prefix = "icons/";
-legendIcons.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
-legendIcons.push({iconPath: prefix + "OilTerminal.gif", label: "oil hubs"});
-legendIcons.push({iconPath: prefix + "Railroad.gif", label: "rail yards"});
-legendIcons.push({iconPath: prefix + "piles.gif", label: "stockpiles"});
-legendIcons.push({iconPath: prefix + "steelmill.gif", label: "steel mills"});
-legendIcons.push({iconPath: prefix + "chemical-industry.gif", label: "chemicals"});
-legendIcons.push({iconPath: prefix + "star.gif", label: "gas stations"});
-legendIcons.push({iconPath: prefix + "airport.gif", label: "airports"});
-legendIcons.push({iconPath: prefix + "electricity.gif", label: "power plants"});
-
-var legend = document.getElementById("legend-basic");
-legendIcons.map(function(icon){
-  var div = document.createElement("div");
-  div.setAttribute("class", "checkbox legend-img-container");
-  var label = document.createElement("label");
-  label.setAttribute("style", "btn active");
-  var input = document.createElement("input");
-  input.setAttribute("type", "checkbox");
-  label.appendChild(input);
-
-  var img = document.createElement("img");
-  img.setAttribute("src", icon.iconPath);
-  img.setAttribute("class", "legend-img");
-  label.appendChild(img);
-
-   var labelText = document.createElement("div");
-  labelText.setAttribute("class", "legend-text");
-
-  labelText.innerHTML = icon.label;
-  label.appendChild(labelText);
-
-  div.appendChild(label);
-
-
-
-  legend.appendChild(div);
-
-});
-
-$(document).ready(function(){
-    $("input[type='checkbox']").change(function() {
-      if(this.checked) {
-          alert("checked: " + this.checked);
-      }
-    });
-});
-
-// init map nav bar states
-
-mapStates.map(function (mapState){
-
-});
-
 
 $(".nav a").on("click", function(){
    $(".nav").find(".active").removeClass("active");
@@ -823,6 +735,94 @@ var target = map.getTarget();
                 jTarget.css("cursor", "");
             }
         });
+
+var mapStates = [];
+
+mapStates.push({
+  name: "Refinery",
+  transitionAction: function() {
+    var pan = ol.animation.pan({
+      duration: 1000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
+    view.setZoom(16);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+/** Calumet Basin State **/
+mapStates.push({
+  name: "Calumet Basin",
+  transitionAction: function() {
+    var pan = ol.animation.pan({
+      duration: 1000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(industrialzone);
+    view.setZoom(13);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+
+
+var legendIcons = [];
+var prefix = "icons/";
+legendIcons.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
+legendIcons.push({iconPath: prefix + "OilTerminal.gif", label: "oil hubs"});
+legendIcons.push({iconPath: prefix + "Railroad.gif", label: "rail yards"});
+legendIcons.push({iconPath: prefix + "piles.gif", label: "stockpiles"});
+legendIcons.push({iconPath: prefix + "steelmill.gif", label: "steel mills"});
+legendIcons.push({iconPath: prefix + "chemical-industry.gif", label: "chemicals"});
+legendIcons.push({iconPath: prefix + "star.gif", label: "gas stations"});
+legendIcons.push({iconPath: prefix + "airport.gif", label: "airports"});
+legendIcons.push({iconPath: prefix + "electricity.gif", label: "power plants"});
+
+var legend = document.getElementById("legend-basic");
+legendIcons.map(function(icon){
+  var div = document.createElement("div");
+  div.setAttribute("class", "checkbox legend-img-container");
+  var label = document.createElement("label");
+  label.setAttribute("style", "btn active");
+  var input = document.createElement("input");
+  input.setAttribute("type", "checkbox");
+  label.appendChild(input);
+
+  var img = document.createElement("img");
+  img.setAttribute("src", icon.iconPath);
+  img.setAttribute("class", "legend-img");
+  label.appendChild(img);
+
+   var labelText = document.createElement("div");
+  labelText.setAttribute("class", "legend-text");
+
+  labelText.innerHTML = icon.label;
+  label.appendChild(labelText);
+
+  div.appendChild(label);
+
+
+
+  legend.appendChild(div);
+
+});
+
+$(document).ready(function(){
+    $("input[type='checkbox']").change(function() {
+      if(this.checked) {
+          alert("checked: " + this.checked);
+      }
+    });
+});
+
+// init map nav bar states
+
+mapStates.map(function (mapState){
+
+});
 
 /** Copied from openlayers template: https://jumpinjackie.github.io/bootstrap-viewer-template/2-column/index.html#
 **/
