@@ -7,20 +7,19 @@ body {
  #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
 #map .ol-zoom { font-size: 1.2em; }
 
-
+/** Navbar link style **/
+.navbar-default .navbar-nav > li > a {
+    color: #F00;
+}
 
 #accordion-container
 {
-    padding: 10px 10px 10px 10px;
     position:absolute; 
     left:0px; 
     bottom:0px; 
     margin:0px;
     z-index:10000; 
     width:190px; 
-    /*height:100%;*/
-    /*background-color: #FFF;
-    background-color: rgba(255,255,255,0.8);*/
 }
 
 .panel-group {
