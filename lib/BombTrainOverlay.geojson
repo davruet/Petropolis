@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "REMEMBER GALENA",
+"Image": "<img src='images/Remember_Galena.jpg'><br><br>", 
+"website": "The map on this page shows the locations of the major gas station franchises (BP, Exxon, Marathon, Shell) along with suburban airports, electric power stations, oil refineries, freeways -- plus the rail routes of <a href='http://explosive-crude-by-rail.org/' target='_blank'>explosive Bakken oil tankers</a> through the Chicago metropolitan area.<br><br>Chicago is the freight hub of North America. Almost all the North Dakota oil bound for East Coast ports and refineries passes over the city's aging rail infrastructure. Despite protests around the country, neither the government nor the corporations have moved to change anything fundamental about the 'rolling pipeline' that carries volatile crude bubbling with methane gas through highly populated urban areas. Yet the March 5, 2015 derailment of a Chicago-bound BNSF train near Galena, Illinois, just one hundred and sixty miles west of city, left little doubt about the risks involved. When you see the 1267 placard, it's a 'bomb train.' How can so many clear and present dangers be ignored? That's just everyday life in Petropolis.", 
+"EPA": "", 
+"Notes": "FURTHER INFO: On Galena, see <a href='http://www.chicagotribune.com/news/local/breaking/chi-galena-train-derailment-20150305-story.html' target='_blank'>Chicago Tribune</a>. On bomb trains, see <a href='http://priceofoil.org/content/uploads/2014/05/OCI_Runaway_Train_Single_reduce.pdf' target='_blank'>Price of Oil</a>. For what you can do, see <a href='https://www.popularresistance.org/lessons-from-the-delta-5-necessity-defense/' target='_blank'>Popular Resistance</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.329, 41.500 ] } }
+]
+}
+
+

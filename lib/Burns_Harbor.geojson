@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Burns Harbor - Anthropocene Landscape",
+"Image": "<a href='Galleries/Burns_Harbor.html'><img src='images/Burns_Harbor.jpg'></a><br>photos by Brian Holmes<br>", 
+"website": "<h4>click image for slideshow</h4>", 
+"EPA": "", 
+"Notes": "" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.4501, 41.6618 ] } }
+]
+}

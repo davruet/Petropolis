@@ -1,0 +1,43 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+
+{ "type": "Feature", "properties": { "Name": "STATE LINE ENERGY LLC<br><br> 103RD ST & LAKE MICH HAMMOND IN 46320", 
+"EPA": "<a href='' target='_blank'>EPA facility report</a>", 
+"website": "<a href='' target='_blank'>Company website</a>", 
+"Notes": "The former coal-fired power plant <a href='http://www.nwitimes.com/business/local/new-owner-buys-hammond-s-shuttered-state-line-energy-plant/article_e8d2157c-e9d1-5dff-80ec-63e8cc816f96.html' target='_blank'>was purchased in 2013 by Sam Townline Development Inc.</a>, whose owner, Alan Beemsterboer, formerly ran a petcoke terminal on the Calumet River at 106th St. The plant has since been destroyed. The future use of the site remains uncertain." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.5217, 41.7072, 5957.010546299999987 ] } },
+
+{ "type": "Feature", "properties": { "Name": "IRONSIDE ENERGY, LLC<br><br> 3210 WATLING STREET, MAIL CODE 2-991 EAST CHICAGO IN 46312", 
+"EPA": "<a href='http://oaspub.epa.gov/enviro/ghgreport.html?pFacId=1003195&pSp=1&pReportingYear=2014' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.primaryenergyrecycling.com/projects/ironside/default.aspx' target='_blank'>Company website</a>", 
+"Notes": "'The Ironside Energy CHP facility allows ArcelorMittal to capture and beneficially use practically all of the byproduct gas that would otherwise be flared, thereby producing useful electricity and reducing net pollution into the environment.'" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.45247, 41.6641, 309.385482939999974 ] } },
+
+{ "type": "Feature", "properties": { "Name": "WHITING CLEAN ENERGY INC<br><br> 2155 Standard Ave Whiting IN 46394", 
+"EPA": "<a href='' target='_blank'>EPA facility report</a>", 
+"website": "<a href='https://www.asmeconferences.org/Power2010/pdfs/Whiting.pdf' target='_blank'>Company website</a>", 
+"Notes": "BP gets its steam from this natural gas co-generating plant, which it has owned outright since 2008. The refinery sells low-carbon power to the surrounding area as a way to 'reduce its carbon footprint,' according to <a href='http://www.nwitimes.com/business/local/bp-acquires-whiting-clean-energy/article_11e7c5ae-8aa0-5099-82fd-3c13d9d60f96.html' target='_blank'>this source</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.4778, 41.6739, 968.247541930000011 ] } },
+
+{ "type": "Feature", "properties": { "Name": "NIPSCO  DEAN H  MITCHELL STATION<br><br> 1 N Clark Rd Gary IN 46404", 
+"EPA": "", 
+"website": "", 
+"Notes": "'On January 13, 2011, the Obama administration brokered a settlement in which Northern Indiana Public Service Co. will permanently shut down the Dean Mitchell Generating Station, and spend $600 million to install and improve pollution controls at the company's three other aging electric generators - Schahfer Generating Station in Wheatfield, Bailly Generating Station in Chesterton, and the Michigan City Generating Station.' (<a href='http://www.sourcewatch.org/index.php/Dean_Mitchell_Generating_Station' target='_blank'>source here</a>)." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.4069, 41.6394, 0.4951633892 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Exelon Generation Co LLC<br><br> 3141 E 96th St Chicago IL 60617-5474", 
+"EPA": "", 
+"website": "<a href='http://www.exeloncorp.com/locations/power-plants/southeast-chicago-energy-project' target='_blank'>Company website</a>", 
+"Notes": "It's a natural-gas fired plant used to meet peak-energy demand in summer and winter." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.544845, 41.717835, 12.14045402 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Calumet Energy Team Project<br><br> 11653 S Torrence Ave Chicago IL 60617-5601", 
+"EPA": "<a href='http://oaspub.epa.gov/enviro/ghgreport.html?pFacId=1005756&pSp=1&pReportingYear=2014' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.gdfsuezna.com/locations-map/' target='_blank'>Company website</a>", 
+"Notes": "A small natural gas plant owned by a gigantic European conglomerate." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.556636, 41.683665, 6.6801619433 ] } }
+]
+}

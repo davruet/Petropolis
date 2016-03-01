@@ -1,0 +1,126 @@
+<!doctype html>
+  <head>
+    <title>OpenLayers - OpenStreetMap</title>
+    <!-- OpenLayer stiluslap letoltese -->
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.9.0/css/ol.css" type="text/css" />
+    <!-- OpenLayer letoltese -->
+    <script src="http://openlayers.org/en/v3.9.0/build/ol.js"></script>
+    <style>
+      <!-- stilus beallitasok -->
+	  <!--
+      html, body, #map {
+        height: 100%;
+        margin: 5px;
+        padding: 0px;
+      }
+	  -->
+	  #popup {
+		background: yellow;
+	  }
+	  .ol-scale-line {
+		position: absolute;
+		left: 50px;
+	  }
+    </style>
+ 
+    <script>
+    // initialize map
+    function Initialize() {
+       // OSM layer
+       var osmLayer = new ol.layer.Tile({
+          source: new ol.source.OSM()
+       });
+       // projection for kml file
+       var projection = ol.proj.get('EPSG:3857');
+       // layer from kml
+       var kmlLayer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+             projection: projection,
+			 format: new ol.format.KML(),
+             url: 'FTZ22.kml'
+          })
+       });
+       // center point for map
+       var eger = ol.proj.transform([-87.545, 41.680832], 'EPSG:4326', 'EPSG:3857');
+       // view for map
+       var view = new ol.View({
+          center: eger,
+          zoom: 10
+       });
+       // the map itself
+       var map = new ol.Map({
+          target: 'map'
+       });
+       // add layers to map
+       map.addLayer(osmLayer);
+     
+       // add view to map
+       map.setView(view);
+
+       // map controls
+       // mouse position at upper right corner
+       var mousePosition = new ol.control.MousePosition({
+          coordinateFormat: ol.coordinate.createStringXY(4),
+          projection: 'EPSG:4326'
+       });
+       map.addControl(mousePosition);
+       // scale line at lower left corner
+       map.addControl(new ol.control.ScaleLine());
+	   // slider
+	   map.addControl(new ol.control.ZoomSlider());
+	   map.addControl(new ol.control.OverviewMap({
+		   layers: [osmLayer]
+	   }));
+
+       // set selection for kml layer
+       var selectClick = new ol.interaction.Select({
+          layers: [kmlLayer]
+       });
+	   map.addInteraction(selectClick);
+       // element for attribute text
+       var element = document.getElementById('popup');
+       // overlay element for popup text
+       var popup = new ol.Overlay({
+         element: element
+       });
+       map.addOverlay(popup);
+
+       // function to display attribute text
+       var displayFeatureInfo = function(pixel, coordinate) {
+          var features = [];
+          // features near by click position
+          map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+             features.push(feature);
+          });
+          if (features.length > 0) {
+             var info = [];
+             // collect attributes of found features
+             for (var i = 0, ii = features.length; i < ii; ++i) {
+                info.push(features[i].get('name'));
+             }
+             // add to map
+             element.innerHTML = info.join(', ') || '(unknown)';
+             // set text position
+             popup.setPosition(coordinate);
+          } else {
+             // remove previous text
+             element.innerHTML = '';
+          }
+        };
+       // connect click event to attribute display
+       map.on('click',function(evt){
+          var coordinate = evt.coordinate;
+          displayFeatureInfo(evt.pixel, coordinate);
+       });
+    }   
+  </script>
+  </head>
+  <body onLoad="Initialize()">
+    <!-- div for map -->
+    <div id="map" class="map" tabindex="0">
+       <!-- div for attribute text -->
+       <div id="popup"></div>
+    </div>
+  </body>
+</html>
+

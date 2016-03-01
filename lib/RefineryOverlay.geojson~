@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "<h4><br>Do we really know what energy is, or where it comes from? Step right up to the fire, touch the captive sun.",
+"Image": "", 
+"website": "<h4>This map is about the cinders of power. It's about the refineries and the steel mills and the chemical plants of South Chicago. It's about the Athabascan tar sands and the pipelines in the Gulf of Mexico.<br><h4>This map is about an explosion that has not yet happened.<br><h4>Welcome to Petropolis.</h4>", 
+"EPA": "", 
+"Notes": "" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.48184, 41.66973 ] } }
+]
+}

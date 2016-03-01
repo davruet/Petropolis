@@ -1,0 +1,41 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Former KCBX Terminals North Site<br><br>3259 E 100th St Chicago IL 60617",
+"Image": "<a href='images/BH_KCBX-North.jpg' target='_blank'><img src='images/BH_KCBX-North-s.jpg'></a></a><br>photo BH <em>(click for enlargement)</em><br><br>", 
+"EPA": "Full archive of <a href='http://www2.epa.gov/petroleum-coke-chicago/epa-requires-beemsterboer-and-kcbx-take-action' target='_blank'>EPA's confrontation with KCBX over the petcoke issue</a>", 
+"website": "Link to <a href='http://www.kochcarbon.com/Products.aspx' target='_blank'>company website</a>", 
+"Notes": "<a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/KCBX_Attachment_1.pdf' target='_blank'>Initial comments</a> on proposed dust regulations; see the <a href='http://www.cityofchicago.org/city/en/depts/cdph/supp_info/environmental_permitsandregulation/doe_ordinances_rulesandregulationsandsupportingdocuments.html' target='_blank'>Chicago Dept of Public Health website</a> for the full correspondence on the issue.<br>This site was closed in 2015 in response to municipal regulation, but also as part of an already planned transfer of all petcoke and coal operations to the South Terminal just a short distance down the river." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.5453, 41.7120, 51.619433198 ] } }, 
+
+{ "type": "Feature", "properties": { "Name": "KCBX Terminals South Site<br><br>10730 S Burley Ave Chicago IL 60617",
+"Image": "<a href='images/Terry Evans_petcoke-neighborhood.jpg' target='_blank'><img src='images/Terry Evans_petcoke-neighborhood-s.jpg'></a></a><br>photo Terry Evans <em>(click for enlargement)</em><br><br>", 
+"EPA": "For a chronology of the struggles surrounding fugitive dust from the petcoke piles, see the archive of <a href='http://switchboard.nrdc.org/cgi-bin/mt/mt-search.cgi?tag=petroleumcoke&limit=20&IncludeBlogs=all' target='_blank'>NRDC articles</a> on the issue. For the legal maneuvers between the City of Chicago, environmental organizations and terminal operators such as KCBX, see the full correspondence between the parties on the <a href='http://www.cityofchicago.org/city/en/depts/cdph/supp_info/environmental_permitsandregulation/doe_ordinances_rulesandregulationsandsupportingdocuments.html' target='_blank'>Chicago Dept of Public Health website</a>. To grasp the human relation between this toxic site and the surrounding neighborhoods, see the photoreportage by <a href='http://www.chicagomag.com/Chicago-Magazine/August-2015/KCBX-pet-coke/' target='_blank'>artist Terry Evans</a>.", 
+"website": "Link to <a href='http://www.kochcarbon.com/Products.aspx' target='_blank'>company website</a>", 
+"Notes": "" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.5497, 41.696772, 50.47816657 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Former Calumet Transload Facility (Beemsterboer Slag Corp)<br><br>106th and Calumet River Chicago IL 60617",
+"Image": "For images, see <a href='http://galleries.apps.chicagotribune.com/chi-bp-whiting-indiana-refinery-20131018/' target='_blank'>the photo-reportage by Zbigniew Bzdak</a> in the Chicago Tribune.<br><br>", 
+"EPA": "Full archive of <a href='http://www2.epa.gov/petroleum-coke-chicago/epa-requires-beemsterboer-and-kcbx-take-action' target='_blank'>EPA's confrontation with Beemsterboer</a> over the petcoke issue", 
+"website": "Link to <a href='http://www.beemslag.com/' target='_blank'>company website</a>", 
+"Notes": "Beemsterboer closed its petcoke operation in September 2014 under pressure from the city, as recounted in the <a href='http://www.chicagotribune.com/news/ct-petcoke-beemsterboer-met-20140924-story.html' target='_blank'>Chicago Tribune</a> and the <a href='http://www.nwitimes.com/business/local/beemsterboer-shuts-down-petcoke-storage-terminal-in-chicago/article_9cc07f97-d18b-5cd4-b54b-afff3c80967b.html' target='_blank'>Northwest Indiana Times</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.548145, 41.704225, 21.282244072 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Gulf Sulpher Services, subsidiary of Savage Services Corp<br><br>12200 S Carondolet Ave Chicago IL 60633",
+"Image": "<a href='images/Bertrand Krill_Gulf-Sulpher.jpg' target='_blank'><img src='images/Bertrand Krill_Gulf-Sulpher-s.jpg'></a></a><br>photo by Bertrand Krill <em>(click for enlargement)</em><br><br>", 
+"EPA": "<a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/VarianceRequestGulfSulphurServicesLtd.pdf' target='_blank'>Request for variance</a> from dust regulations<br>Public comment <a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/PetCoke_Public_Comments/PCLydiaJSESideCoalBanPtckeGulfSulphurVarReq5302014.pdf' target='_blank'>no 1</a> and <a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/PetCoke_Public_Comments/PCMeleahNRDCKHarleySETFGulfSulSrvcsVarReq62014.pdf' target='_blank'>no 2</a> on that request", 
+"website": "Link to <a href='' target='_blank'>Parent company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.55, 41.673608, 50.064619505 ] } },
+
+{ "type": "Feature", "properties": { "Image": "<a href='images/HorseheadCorp.jpg' target='_blank'><img src='images/HorseheadCorp-s.jpg'></a></a><br>photo Claire Pentecost <em>(click for enlargement)</em><br><br>", "Name": "Horsehead Corporation<br><br>2701 E 114th St Chicago IL 60617", 
+"EPA": "Horsehead's <a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/VarReqfromHorseheadCorp2701E114thSt.pdf' target='_blank'>variance request to the fugitive dust regulations</a> and <a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/VarReqHorsehdCorp2701_E_114thSt9252015.pdf' target='_blank'>subsequent modifications</a><br>SETF/NRDC's <a href='http://www.cityofchicago.org/content/dam/city/depts/cdph/environmental_health_and_food/PetCoke_Public_Comments/PubComNRDCSETFComonHorseheadVarReq922014.pdf' target='_blank'>response to the variance request</a>", 
+"website": "Link to <a href='http://www.zinccorp.com/facility_content.php?ID=11' target='_blank'>company website</a>", 
+"Notes": "Horsehead recycles <a href='http://horsehead.net/horsehead-corp/eaf-dust-recycling' target='_blank'>electric arc furnace dust</a> from the steel industry to make a 60% zinc feedstock for use in its North Carolina plant. It also makes a 50% iron product used as aggregate in asphalt and as a passive water treatment. To do this it burns coke, formerly petcoke and now only metallurgical coke or metcoke. The whole site is black with coke and piles of it could be seen on the river bank in summer 2015. It's not clear why EPA has only one <a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/60617HRSHD2701E/HORSEHEAD%20CORP' target='_blank'>toxic release</a> report on Horsehead; maybe because of its designation as a recycling facility?" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.554445, 41.687645, 137.35362204 ] } }
+
+]
+}

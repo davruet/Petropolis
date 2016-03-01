@@ -1,0 +1,48 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "ArcelorMittal Riverdale Inc<br><br>13500 S Perry Ave Riverdale IL 60827", 
+"Image": "<img src='images/Arcelor-Mittal_Riverdale.png'><br><br>",
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/60627CMSTL13500/ARCELORMITTAL%20RIVERDALE%20LLC' target='_blank'>EPA facility report</a>", 
+"website": "Link to the <a href='http://usa.arcelormittal.com/Our-operations/Flat/Riverdale/' target='_blank'>company website</a>", 
+"Notes": "The decline of the steel mills has left a devastated landscape stretching from the South Side of Chicago all the way to Gary, Indiana. The Riverdale plant has not closed yet - but <a href='http://www.nwitimes.com/business/local/arcelormittal-warns-a-hot-strip-mill-could-close/article_6bc3e653-4039-525b-ab2c-7f2e7fddf7d1.html' target='_blank'>a flood of cheap steel imports</a>, unleashed by the global recession, is bringing a slow end to much of the remaining Chicagoland steel industry." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.625847, 41.656474, 2559.716599200000019 ] } },
+
+{ "type": "Feature", "properties": { "Name": "ARCELORMITTAL PLATE LLC<br><br>1 N Broadway Gary IN 46402", 
+"Image": "",
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46402RCLRM1NBRA/ARCELORMITTAL%20PLATE%20LLC%20%28GARY%20PLATE%29' target='_blank'>EPA facility report</a>", 
+"website": "Link to the <a href='http://usa.arcelormittal.com/What-we-do/Steel-products/Plate/' target='_blank'>company website</a>", 
+"Notes": "The steel plate is used in offshore drilling rigs - but also in <a href='http://usa.arcelormittal.com/globalassets/arcelormittal-usa/what-we-do/steel/plate/plate-product-brochures/201012_wind-tower.pdf' target='_blank'>wind towers</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.337538, 41.608606, 25.224117987 ] } },
+
+{ "type": "Feature", "properties": { "Name": "ArcelorMittal Indiana Harbor<br><br>3210 Watling Street East Chicago IN 46312", 
+"Image": "<a href='Galleries/BurnsHarbor/BurnsHarbor.html'><img src='images/BH_Indiana-Harbor-s.jpg'></a></a><br><em>photo BH (click for enlargement)</em><br><br>",
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46312NDNHR3210W/INDIANA%20HARBOR%20COKE%20CO%20LP' target='_blank'>EPA facility report</a>", 
+"website": "Do you want to see what a new geological layer looks like? This is the largest integrated steel mill complex in North America, an entirely artificial Anthropocene landscape made over the course of a century out of slag and debris jutting out into Lake Michigan. However, the new geological layer is no longer growing at the same rate. In the face of the global recession, Mittal has <a href='https://www.wsws.org/en/articles/2015/01/28/steel-j28.html' target='_blank'>idled</a> a portion of its Indiana Harbor operations, lending the whole site an uncanny calm on a sunny fall day in 2015.<br>For a look inside the Chicagoland steel industry, see the extraordinary <a href='http://www.terryevansphotography.com/index.php?/project/steel-work---production/' target='_blank'>photo series</a> shot principally in Indiana Harbor, by Chicago-area artist Terry Evans.<br>", 
+"Notes": "Link to the <a href='http://usa.arcelormittal.com/Our-operations/Flat/Indiana-Harbor/' target='_blank'>company website</a>" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.44171, 41.66736, 7612.390601799998876 ] } },
+
+{ "type": "Feature", "properties": { "Name": "INDUSTRIAL STEEL CONSTRUCTION INC<br><br>86 N Bridge St Gary IN 46404", 
+"Image": "",
+"EPA": "", 
+"website": "Link to the <a href='http://www.iscbridge.com/location-and-history/gary-in-facility' target='_blank'>company website</a>", 
+"Notes": "This plant still builds bridges." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.372274, 41.608756, 125.79870142 ] } },
+
+{ "type": "Feature", "properties": { "Name": "U.S. STEEL - EAST CHICAGO TIN OPERATIONS<br><br>101 EAST 129TH STREET EAST CHICAGO IN 46312", 
+"Image": "",
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46312SSSTC101E1/USS%20EAST%20CHICAGO%20TIN' target='_blank'>EPA facility report</a>", 
+"website": "Link to the <a href='https://www.ussteel.com/uss/portal/home/aboutus/facilities/company-facilities-eastchicagotin-eastchicagoind/!ut/p/b1/vZFJkptAEEXP0gfAVBXzEhDzWAwSYqOQBEgMEohBIE7v7gg7vHL3xu3MVUa8zB__J5mSCZnej8_ychzL9n5sPuaUPWgxQrTucB6vbTlg-D7DBlaAAAffgf0nwJb5an9HJtGek-TWmRUlOJgRMLhQqSGOxo64jKcmzUpr2je5XbhsjjqqXldH3s94FYdhLInhkXvhWM57N1C1l7pTw5LHld7lnHFmLd5XHn4YyQ9bUWYVqA4FYTNzZdYOzBmFtWgGtjz38pgTkn1YLdfAwyBpen71q0Kps-g-QREUAQ7WjIFEpSH2mqWvIlvyCjxo6GNtEno4rdl0OEmsZb_6-e3dU_qp7Y9UPgU86hcA_lIiIF29veXk_h3j_tzxYhsCg0H-RnRo4GGOjMgE0IewenXGWq9BBWYUVqrprPECqxi5cRW4J2UOXQ--x76AUwyiVXWiKp6dTQydsfCzbRBLotzjvb_7SpD5JkHakdStTQehrvssMCjTCLeaTgEN_l-HPGa_W1D7eLDBeLJrmDHlydQ_FzTJdBqGH_P59oPhEETkton55XRxlo0_Wersu2dbv59Gar1oA0LHQhFvazrooUB5h16qdycnrVu5C4xpbARzTNCppyDi9pmVBlXvJOyOrwfYZ7lKDEnsykJb7JahtHpPIPQb16dEkyhAk7P4jJ6zhi296Caqk5-3EGfXljHPkfIqHoqDneWQCenmYU3HLLnmhmrczBQXT8ESBaI5uC_NWGoc9M3O1F_3he7oftQ03PSyHzwgukbLvEmb8jIzKmXfpK690_FI8ec24rOip6W7lecEfiO7W_zslGKTrL9bfPsJDhbQCg!!/dl4/d5/L2dBISEvZ0FBIS9nQSEh/' target='_blank'>company website</a>", 
+"Notes": "The sprawling tin facility was <a href='http://www.nwitimes.com/business/local/u-s-steel-will-idle-east-chicago-tin-mill-lay/article_caae527c-fa4b-5401-a46d-bd9e5c9960ea.html' target='_blank'>idled in early 2015</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.472383, 41.657664, 22.984278485 ] } },
+
+{ "type": "Feature", "properties": { "Name": "US STEEL GARY WORKS<br><br>1 N Broadway Gary IN 46402", 
+"Image": "",
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46402SSGRYONENO/USS%20GARY%20WORKS' target='_blank'>EPA facility report</a>", 
+"website": "Link to the <a href='https://www.ussteel.com/uss/portal/home/aboutus/facilities/company-facilities-garyworks-garyind/!ut/p/b1/vZPJjptQFES_pT_A4TE9YImNzWSmh8HABmGmBoyZMfD1cUuJskr3Jp26qyuVVDolFRZgHhY8ornIo7FoHtH94w9gKDoEQUkaY7CiywDZNGmIVEQABseumId8Rj8M8vMoo0xBlJrmRcsNGaUaYCSibfTH1QmquSWWweKE86bFz8kH_sYPQzEsdZcOY3C0pqlU5fx0VVCVbR1eGUkVJXJ6g47U6rlzqmP_AEVR4kg3xVmiQuMUdZlQFPZxH4nciYqlsMtgVLNkYsLdu7Jooqfz7xcNmBY3ymwfNRcRjrfE2BEJ57jT45b5-ynczwa-2-V7cXnxvYD9T4Bd-qs-FCyYhuHHM65_0AyBE5hbOuwSD9pTMCf1NIJ7vpo6eetJ3qGItQ4Kr3BVhVNRmA2dHXGJ9pSOeSzsyxSyneKbEOJzH4Cm1Q2nCt1bUWzXO90-IJFY4EzknKvXyA3INFB08lpyaq02Hu2iLQr3iG9cWFPGek7k4X1lSnBf9FHdHKHJl54N4SpVbkxGBmSfjm3d78ckUweBYVVWHxfmFs_4TkvPwXxJCz84rL4Beruj1CHVIrkCJ7VAy_2pQkG7eIwWkdFkcjDUJHpW6yR_e8P8V1_Mn74M54wDmSZMgdcoYFgMdsE8QIV2ubbyVm2o3CxCAwMxXJCGO7iu9zdLdyqgvyjtHsn8uyK2VXXtbL-1nYey62ujaBpeLG3P5L8OpL8pkNL2J_dMIVuSTAhkUpFtV5RIIOL_l5C14HcHiuAlmTYOuqw4pHEg_3ngFQs-ndnHCj81GOQvA_iLeIDpUlOnWFvPZ3rWs99nyzv-J3_EigM!/dl4/d5/L2dBISEvZ0FBIS9nQSEh/' target='_blank'>company website</a>", 
+"Notes": "The coke oven at this immense site <a href='http://www.chicagotribune.com/suburbs/post-tribune/news/ct-ptb-gary-coke-plant-closing-st-0227-20150226-story.html' target='_blank'>has been closed</a> - part of the steel idustry's slow conversion to <a href='http://myuswlocal.org/sites/US/LU1899/index.cfm?action=article&articleID=bae85cdc-30c2-44f6-b59a-1e17f306fe9c' target='_blank'>cleaner industrial processes</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.3125, 41.616667, 22103.95518699999957 ] } }
+]
+}

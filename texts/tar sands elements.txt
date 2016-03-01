@@ -1,0 +1,79 @@
+
+
+     <button id="fly-to-tarsands"><h4 style="font-weight: bold; color:#db0000;">Tar Sands</button> 
+     
+     
+     
+    var flyToTarSands = document.getElementById('fly-to-tarsands');
+flyToTarSands.addEventListener('click', function() {
+  var duration = 2000;
+  var start = +new Date();
+  var pan = ol.animation.pan({
+    duration: duration,
+    source: /** @type {ol.Coordinate} */ (view.getCenter()),
+    start: start
+  });
+  var bounce = ol.animation.bounce({
+    duration: duration,
+    resolution: 4 * view.getResolution(),
+    start: start
+  });
+  map.beforeRender(pan, bounce);
+  view.setCenter(tarsands);
+  view.setZoom(19);
+}, false);
+
+
+
+// fifth overlay (Gulf)
+
+var iconFeature5 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.transform([-88.3871611, 28.7366694], 'EPSG:4326', 'EPSG:3857'))
+});
+
+
+var iconStyle5 = new ol.style.Style({
+  image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    src: 'overlays/oilburnoff.png'
+  }))
+ });
+
+ iconFeature5.setStyle(iconStyle5);
+
+ var vectorSource5 = new ol.source.Vector({
+  features: [iconFeature5]
+ });
+
+ var burnoff = new ol.layer.Vector({
+  source: vectorSource5,
+            minResolution: 0.25,
+            maxResolution: 40
+ });
+
+
+// second overlay
+
+var iconFeature2 = new ol.Feature({
+  geometry: new ol.geom.Point(ol.proj.transform([-87.339, 41.876], 'EPSG:4326', 'EPSG:3857'))
+});
+
+
+var iconStyle2 = new ol.style.Style({
+  image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+    src: 'overlays/Petropolis.gif'
+  }))
+ });
+
+ iconFeature2.setStyle(iconStyle2);
+
+ var vectorSource2 = new ol.source.Vector({
+  features: [iconFeature2]
+ });
+
+ var anthropocosmos = new ol.layer.Vector({
+  source: vectorSource2,
+            minResolution: 140,
+            maxResolution: 160
+ });
+
+

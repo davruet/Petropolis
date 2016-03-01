@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "CITGO Petroleum Corp:<br><br> 135th St and New Ave Lemont IL 60439",
+"Image": "", 
+"EPA": "<a href='' target='_blank'>EPA facility report</a>", 
+"website": "Link to <a href='' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -88.05586, 41.644441, 2082.257364399999915 ] } }
+]
+}

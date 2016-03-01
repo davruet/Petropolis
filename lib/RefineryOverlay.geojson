@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "<img src='images/Petcoke.jpg'><br>",
+"Image": "<h4><br>Do we really know what energy is, where it comes from, how it's made, where it goes?<br><br>Step up to the fire, touch the captive sun.", 
+"website": "<h4>This map is about the cinders of power. It's about the refineries and steel mills and chemical plants of Southeast Chicago. It's about the Tar Sands and the Gulf of Mexico.", 
+"EPA": "<h4>This map is about explosions that haven't yet happened.", 
+"Notes": "<h4>Welcome to Petropolis.</h4>" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.48184, 41.66973 ] } }
+]
+}

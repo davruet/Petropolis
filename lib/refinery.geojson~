@@ -1,0 +1,27 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "BP PRODUCTS NORTH AMERICA INC, WHITING<br><br> 2815 INDIANAPOLIS BLVD. WHITING IN 46394",
+"Image": "<a href='images/Claire Pentecost_BP-Whiting.jpg' target='_blank'><img src='images/Claire Pentecost_BP-Whiting-s.jpg'></a></a><br>photo Claire Pentecost <em>(click for enlargement)</em><br><br>",  
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46394MCLC%202815I/BP%20PRODUCTS%20NA%20WHITING%20BUSINESS%20UNIT' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.bp.com/en_us/bp-us/what-we-do/refining/whiting.html' target='_blank'>Company website</a>", 
+"Notes": "In addition to releasing two-and-a-quarter MILLION pounds of toxic substances in 2014 (check the EPA report), BP Whiting has recently been in the news for gas price hikes occasioned by <a href='http://www.nytimes.com/2015/08/14/business/breakdown-at-bp-refinery-strains-midwest-gas-prices.html?_r=0' target='_blank'>the unplanned summer shutdown of its crude distillation units</a>, and more importantly, for its <a href='http://www.huffingtonpost.com/steve-horn/bp-lake-michigan-oil-spil_b_5051130.html2014' target='_blank'>oil spill into Lake Michigan</a>. The Whiting refinery is among the world's largest processers of Alberta tar sands oil, which is brought to the Chicagoland area by Enbridge company pipelines." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.479643, 41.663055, 6173.081260799999654 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Exxon Mobil Oil Corp<br><br> Interstate 55 & Arsenal Rd Joliet IL 60434",
+"Image": "", 
+"EPA": "<a href='' target='_blank'>EPA facility report</a>", 
+"website": "Link to <a href='' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -88.18346, 41.413831, 3603.209947899998951 ] } },
+
+{ "type": "Feature", "properties": { "Name": "CITGO Petroleum Corp:<br><br> 135th St and New Ave Lemont IL 60439",
+"Image": "", 
+"EPA": "<a href='' target='_blank'>EPA facility report</a>", 
+"website": "Link to <a href='' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -88.05586, 41.644441, 2082.257364399999915 ] } }
+]
+}

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Deepwater Horizon",
+"Image": "<a href='Galleries/Deepwater.html'><img src='images/Deepwater.jpg'></a><br>click image for slideshow<br>", 
+"website": "", 
+"EPA": "The Deepwater Horizon was a state-of-the-art drilling rig, owned by Transocean, contracted by BP and serviced by Halliburton. After a well blowout, explosion and surging fire beginning on April 20, 2010, the rig finally collapsed and sank beneath the waves on April 22. Five thousand feet below, the Macondo wellhead continued spewing oil into the Gulf of Mexico until June 15 - approximately five million barrels all told. The BP spill is accounted the worst environmental disaster in the United States since the Dust Bowl of the 1930s.", 
+"Notes": "" }, 
+"geometry": { "type": "Point", "coordinates": [ -88.3871611, 28.7366694 ] } }
+]
+}

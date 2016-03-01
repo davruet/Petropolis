@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Lone Star Industries Inc:<br><\/br> 490 Portland Ave Oglesby IL 61348", "descriptio": "<p>NAICS: 327310\n.", "timestamp": null, "begin": null, "end": null, "altitudeMo": "relativeToGround", "tessellate": -1, "extrude": 1, "visibility": 0, "drawOrder": null, "icon": null }, "geometry": { "type": "Point", "coordinates": [ -89.051682, 41.288495, 87.04453441299999 ] } },
+{ "type": "Feature", "properties": { "Name": "Illinois Cement Co:<br><\/br> 1601 Rockwell Rd LaSalle IL 61301-0442", "descriptio": "<p>NAICS: 327310\n.", "timestamp": null, "begin": null, "end": null, "altitudeMo": "relativeToGround", "tessellate": -1, "extrude": 1, "visibility": 0, "drawOrder": null, "icon": null }, "geometry": { "type": "Point", "coordinates": [ -89.081612, 41.329483, 456.91150954 ] } }
+]
+}

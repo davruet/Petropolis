@@ -1,0 +1,49 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "PVS Chemicals Inc (Illinois)<br><br>12260 S Carondolet Ave Chicago IL 60633",
+"Image": "<a href='images/Claire Pentecost_SVS.jpg' target='_blank'><img src='images/Claire Pentecost_SVS-s.jpg'></a></a><br>photo Claire Pentecost <em>(click for enlargement)</em><br><br>", 
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/60633PVSCH12260/PVS%20CHEMICAL%20SOLUTIONS%20INC' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.pvschemicals.com/chemical_solutions.asp' target='_blank'>Company website</a>", 
+"Notes": "" }, "geometry": { "type": "Point", "coordinates": [ -87.550945, 41.672205, 1.8796992481 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Agri-Fine Corp<br><br>2701 E 100th St Chicago IL 60617",
+"Image": "<img src='images/Agri-Fine.jpg'><br><br>", 
+"EPA": "<a href='http://www.agri-fine.com/' target='_blank'>Company website.</a>", 
+"website": "'Agri-Fine is a good neighbor that has nothing to do with pet coke,' they say on their website. However the animal-feed operation emits an odor so foul that visitors leave the neighborhood and inhabitants are forced indoors. The Illinois attorney general's office accuses Agri-Fine of exceeding legal emissions limits of two dangerous chemicals, sulfur dioxide and hydrogen sulfide. This struggle is ongoing.", 
+"Notes": "FURTHER INFO: <a href='http://www.law360.com/articles/597689/illinois-ag-sues-animal-feed-company-over-nasty-odor' target='_blank'>Here</a> and<a href='https://www.dnainfo.com/chicago/20150617/south-deering/something-smells-funny-but-southeast-side-agri-fine-odor-is-no-joke' target='_blank'>here.</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.558146, 41.713135, 1.012145749 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Blue Island Phenol LLC<br><br>3350 W 131st St Alsip IL 60406", "EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/60406BTLSP131ST/BLUE%20ISLAND%20PHENOL%20LLC' target='_blank'>EPA facility report</a>", "website": "", "Notes": "This fifty-year-old plant was struck by a <a href='http://abc7chicago.com/archive/9359463/' target='_blank'>chemical explosion and fire</a> on Dec 13, 2012, injuring two people and leading to the <a href='http://www.icis.com/resources/news/2014/02/10/9751976/us-blue-island-phenol-plant-shutdown-will-be-permanent/' target='_blank'>permanent closure of the site</a>." }, "geometry": { "type": "Point", "coordinates": [ -87.705559, 41.656662, 54.655870445 ] } },
+
+{ "type": "Feature", "properties": { "Name": "W R GRACE & CO<br><br>5215 KENNEDY AVE East Chicago IN 46312",
+"Image": "", 
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46312DPNTS5215K/GRACE%20DAVISON%20EAST%20CHICAGO' target='_blank'>EPA facility report</a>", 
+"website": "<a href='https://grace.com/en-us' target='_blank'>Company website</a>", 
+"Notes": "Very little information is available about the East Chicago plant." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.461148, 41.618723, 317.247009830000025 ] } },
+
+{ "type": "Feature", "properties": { "Name": "Eco-Services<br><br>2000 Michigan St Hammond IN 46320",
+"Image": "", 
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46320STFFR2000M/ECO-SERVICES%20OPERATIONS' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.eco-services.com/about-us/' target='_blank'>Company website</a>", 
+"Notes": "The company regenerates spent sulphuric acid used in gasoline refining, as well as producing so-called 'virgin sulphuric acid' from molten suphur. The product is moved by rail, in tank cars." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.479749, 41.610002, 132.32764604 ] } },
+
+{ "type": "Feature", "properties": { "Name": "DOVER CHEMICAL HAMMOND WORKS<br><br>3000 Sheffield Ave Hammond IN 46320",
+"Image": "", 
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/46320KLDVS3000S/DOVER%20CHEMICAL%20HAMMOND%20WORKS' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.doverchem.com/' target='_blank'>Company website</a>", 
+"Notes": "The company receives shipments of highly explosive chlorine, which it uses - ironically - to produce fire retardants. After paying a $1.4 million settlement to the EPA in a <a href='http://www.chemicalprocessing.com/articles/2012/epa-fines-dover-chemical/' target='_blank'>complex case</a> involving the non-disclosure of its chlorinated parrafin production, the company along with industry partners and the Department of Defense is now seeking to <a href='http://www.doverchem.com/NewsEvents/tabid/176/EntryId/82/Latest-Announcement-from-EPA-Regarding-Chlorinated-Paraffins.aspx' target='_blank'>block proposed legislation</a> that would ban the compound entirely." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.5138, 41.6594, 12.382721226 ] } },
+
+{ "type": "Feature", "properties": { "Name": "GELITA USA (formerly Dynagel)<br><br>10 Wentworth Ave Calumet City IL 60409",
+"Image": "", 
+"EPA": "<a href='http://www3.epa.gov/enviro/facts/tri/ef-facilities/#/Release/60409DYNGLPLUMM/GELITA%20USA%20-%20CHICAGO%20%28FORMERLY%20DYNAGEL%20INC%29' target='_blank'>EPA facility report</a>", 
+"website": "<a href='http://www.gelita.com/node/429' target='_blank'>Company website</a>", 
+"Notes": "" }, 
+"geometry": { "type": "Point", "coordinates": [ -87.530043, 41.626625, 13.538032099 ] } }
+]
+}

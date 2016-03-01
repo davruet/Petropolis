@@ -1,0 +1,37 @@
+Desires
+
+1. Create a collapsible legending or captioning system which associates a short legend with any icon currently displayed. So it's a panel where you see a vertical column of icons to the left, each with their identifying legeend. This should be doable using the attribution function of Openlayers. (Later I will create a credits list on a a separate html page, so that the required credits will still be accessible). These captions could hopefully be accessed by clicking on a little jpg image, like the blue dot thing that is typically used in Openlayers attributions, except this would be larger and it would have the title - I'll make it, you can use any sort of 1 sq inch jpeg in the meantime.
+
+Alternatively there could just be a checkbox to make the existing style of legend disappear/reappear, but that's a lot less elegant and less useful!
+
+2. Set up a one-click lightbox for the animals, so that you click on the animal and the gallery appears as a full screen image automatically cyclying with a five-second delay. There should be a way to caption the image and state the name of the author, and there should be the usual buttons allowing you to stop the slideshow and advance manually through the sequence. And of course, an exit button.
+
+3. Develop a system so that when you mouseover on an icon, not just a title but a whole set of elements appears: little images plus statistics. This is for the "Grainland" map, specifically the "World System" section. I want to show the image of a beef cow, plus "Argentina: 39 kg per capita" etc. Below you would have the same thing for pigs and chickens too.
+
+4. Set the icons so that the title shows on mouseover.
+
+5. Check the functioning with other browsers than Firefox (for example, fullscreen doesn't work in Chrome and Explorer).
+
+6. Clean up anything in the code that slows the whole thing down.
+	 -update popup to current version of openlayers. (get rid of )
+	 -find css variables for manipulating popups.
+
+Brian holmes book
+Escape the  (at the end, diagrams)
+
+Das Net
+
+ANSELM (???) HKW curator
+Nervous systems
+
+guattari - models of constraint - puts you in a box, with parameters, filled with sensors, constrained.
+processes of self-modeling - identify the factors that are constituting those environment, and then modify those parameters
+escape the overcode
+
+Halperin's book - beautiful data
+Catherine Hales
+
+Mechanization of the Mind - 
+How we became posthuman
+
+Joshua Heinz - history of the macy conferences - von neumann

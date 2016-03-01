@@ -1,0 +1,70 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+
+{ "type": "Feature", "properties": { "Name": "Kirk Yard - Canadian National",
+"Image": "", 
+"EPA": "", 
+"website": "Link to <a href='http://www.cn.ca/en/news/2011/08/media_news_locomotive_repair_shop_20110803' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.3692, 41.6173 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Michigan Yard - Indiana Harbor Belt",
+"Image": "<a href='images/BH_Michigan-Yard.jpg' target='_blank'><img src='images/BH_Michigan-Yard-s.jpg'></a></a><br>photo BH <em>(click for enlargement)</em><br><br>", 
+"EPA": "", 
+"website": "Link to <a href='http://www.ihbrr.com/' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.4597, 41.6380 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Gibson Yard - Indiana Harbor Belt",
+"Image": "", 
+"EPA": "", 
+"website": "Link to <a href='http://www.ihbrr.com/' target='_blank'>company website</a>", 
+"Notes": "This an enormous roll-on roll-off yards for automobile transportation - and if you go to the southeastern edge of the yard, right near Buckeye terminals, there is an old 'roundhouse' maintenance yard of a kind rarely to be seen anymore." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.4862, 41.6075 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Gateway - Canadian National",
+"Image": "", 
+"EPA": "", 
+"website": "Link to <a href='http://www.cn.ca/en/news/2010/12/customer-news-chicago-intermodal-speedgate-20101220' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.6542, 41.5829 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Yard Center - Union Pacific",
+"Image": "", 
+"EPA": "", 
+"website": "Link to <a href='http://www.up.com/customers/intermodal/intmap/int-chi/dolton/index.htm' target='_blank'>company website</a>", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.6115, 41.6146 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Barr Yard - CSX",
+"Image": "<img src='images/CSX_West_Virginia-s.jpg'><br><br>", 
+"EPA": "", 
+"website": "On February 16, 2015, a 107-car CSX tanker train full of volatile Bakken crude went <a href='' target='_blank'>off the rails</a> in Mount Carbon, West Virgina. Oil gushed from 19 cars; 13 of them exploded. No one died that day, but imagine if the derailment occured on a piece of badly maintained track in a major city? Most eastbound Bakken oil trains originate in Chicago, where BNSF and Canadian National hand off their tanker cars to CSX and Norfolk Southern. Additional crude is shifted from pipeline to rail by Buckeye Terminals. The business is highly profitable and safety regulations are actively combatted by management.", 
+"Notes": "Link to <a href='http://www.csxcrudebyrail.com/index.cfm/resources/crude-oil-network-map/' target='_blank'>CSX crude-by-rail map</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.6505, 41.6489 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Blue Island Yard - Indiana Harbor Belt",
+"Image": "<img src='images/Indiana_Harbor_Belt-s'><br><br>", 
+"EPA": "", 
+"website": "The Indiana Harbor Belt is a switching line that plays a crucial role in the exchange of cars between major long-haul carriers servicing the West or East coasts (since no single railroad crosses the entire nation). The Harbor Belt line is equally important as an industrial carrier for South Chicago steel mills and other heavy industries.", 
+"Notes": "Link to <a href='http://www.ihbrr.com/' target='_blank'>company website</a>." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.6499, 41.6387 ] } },
+
+
+{ "type": "Feature", "properties": { "Name": "Calumet Yard - Norfolk Southern",
+"Image": "<img src='images/NorfolkSouthern.png'><br><br>", 
+"EPA": "Link to <a href='http://www.nscorp.com' target='_blank'>company website</a>", 
+"website": "As the company stated in a <a href='http://www.nscorp.com/content/dam/nscorp/bizns/archive/BizNS_Vol5_Issue1.pdf' target='_blank'>2013 brochure</a>:<br><em>'Norfolk Southern entered a changed world in 2013. If you don’t believe that, consider that one of the railroad’s most exciting new business markets involves transporting crude oil from North Dakota shale fields to refineries on the East Coast.'</em><br>Another exciting thing they don't mention is that the Bakken crude from the North Dakota shale-oil wells is <a href='https://www.youtube.com/watch?v=aPVRRgAtL4A' target='_blank'>highly explosive</a>, with numerous derailments to prove it. Norfolk Southern and its close competitior, CSX, send up to 60 oil trains to New York and Pennsylvania refineries each week, as revealed in <a href='http://www.mcclatchydc.com/news/nation-world/national/economy/article24774373.html' target='_blank'>documents obtained against the companies' will</a>. Each 'bomb train' is typically about 100 cars long. Most of the Bakken crude headed to the East Coast is brought to Chicago by BNSF and Canadian National, then transferred to Norfolk Southern and CSX lines. Additional crude is shifted from pipeline to rail by Buckeye Terminals. The long black tanker trains are a common sight in the city. One of them could easily explode in a densely populated neighborhood.", 
+"Notes": "." }, 
+"geometry": { "type": "Point", "coordinates": [ -87.5760, 41.7062 ] } }
+]
+}
