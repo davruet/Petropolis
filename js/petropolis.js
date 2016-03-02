@@ -22,12 +22,6 @@ function bounce(t) {
 }
 
 
-$(".nav a").on("click", function(){
-   $(".nav").find(".active").removeClass("active");
-   $(this).parent().addClass("active");
-});
-
-
 /*
 legend.expanded = false;
 
@@ -464,170 +458,6 @@ var map = new ol.Map({
   view: view
 });
 
-// animations -----------------------------------
-
-var panToRefinery = document.getElementById('pan-to-refinery');
-panToRefinery.addEventListener('click', function() {
-  var pan = ol.animation.pan({
-    duration: 1000,
-    source: /** @type {ol.Coordinate} */ (view.getCenter())
-  });
-  map.beforeRender(pan);
-  view.setCenter(refinery);
-  view.setZoom(16);
-}, false);
-
-var panToIndustrialZone = document.getElementById('pan-to-industrialzone');
-panToIndustrialZone.addEventListener('click', function() {
-  var pan = ol.animation.pan({
-    duration: 1000,
-    source: /** @type {ol.Coordinate} */ (view.getCenter())
-  });
-  map.beforeRender(pan);
-  view.setCenter(industrialzone);
-  view.setZoom(13);
-}, false);
-
-var bounceToJoliet = document.getElementById('bounce-to-joliet');
-bounceToJoliet.addEventListener('click', function() {
-  var pan = ol.animation.pan({
-    duration: 2000,
-    easing: bounce,
-    source: /** @type {ol.Coordinate} */ (view.getCenter())
-  });
-  map.beforeRender(pan);
-  view.setCenter(joliet);
-  view.setZoom(12)
-}, false);
-
-var spiralToPetropolis = document.getElementById('spiral-to-petropolis');
-spiralToPetropolis.addEventListener('click', function() {
-  var duration = 1000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 2 * view.getResolution(),
-    start: start
-  });
-  var rotate = ol.animation.rotate({
-    duration: duration,
-    rotation: -6 * Math.PI,
-    start: start
-  });
-  map.beforeRender(pan, bounce, rotate);
-  view.setCenter(petropolis);
-  view.setZoom(10);
-}, false);
-
-var flyToBakken = document.getElementById('fly-to-bakken');
-flyToBakken.addEventListener('click', function() {
-  var duration = 2000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 4 * view.getResolution(),
-    start: start
-  });
-  map.beforeRender(pan, bounce);
-  view.setCenter(bakken);
-  view.setZoom(7);
-}, false);
-
-
-    var flyToTarSands = document.getElementById('fly-to-tarsands');
-flyToTarSands.addEventListener('click', function() {
-  var duration = 2000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 4 * view.getResolution(),
-    start: start
-  });
-  map.beforeRender(pan, bounce);
-  view.setCenter(tarsands);
-  view.setZoom(17);
-}, false);
-
-
-var flyToNorthAmerica = document.getElementById('fly-to-northamerica');
-flyToNorthAmerica.addEventListener('click', function() {
-  var duration = 2000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 4 * view.getResolution(),
-    start: start
-  });
-  map.beforeRender(pan, bounce);
-  view.setCenter(northamerica);
-  view.setZoom(5);
-}, false);
-
-var flyToGulf = document.getElementById('fly-to-gulf');
-flyToGulf.addEventListener('click', function() {
-  var duration = 2000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 4 * view.getResolution(),
-    start: start
-  });
-  map.beforeRender(pan, bounce);
-  view.setCenter(gulf);
-  view.setZoom(8);
-}, false);
-
-
-var spiralToWorld = document.getElementById('spiral-to-world');
-spiralToWorld.addEventListener('click', function() {
-  var duration = 1000;
-  var start = +new Date();
-  var pan = ol.animation.pan({
-    duration: duration,
-    source: /** @type {ol.Coordinate} */ (view.getCenter()),
-    start: start
-  });
-  var bounce = ol.animation.bounce({
-    duration: duration,
-    resolution: 2 * view.getResolution(),
-    start: start
-  });
-  var rotate = ol.animation.rotate({
-    duration: duration,
-    rotation: -4 * Math.PI,
-    start: start
-  });
-  map.beforeRender(pan, bounce, rotate);
-  view.setCenter(world);
-  view.setZoom(3);
-}, false);
-
-
 
 // Create a popup overlay --
 
@@ -739,6 +569,21 @@ var target = map.getTarget();
 
 var mapStates = [];
 
+// initialize this to the map state that is the starting point.
+var activeMapState = {
+  name: "Calumet Basin",
+  transitionAction: function() {
+    var pan = ol.animation.pan({
+      duration: 1000,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(industrialzone);
+    view.setZoom(13);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+} 
+
 mapStates.push({
   name: "Refinery",
   transitionAction: function() {
@@ -754,21 +599,207 @@ mapStates.push({
 });
 
 /** Calumet Basin State **/
+mapStates.push(activeMapState);
+
 mapStates.push({
-  name: "Calumet Basin",
+  name: "Joliet",
+  transitionAction: function() {
+  var pan = ol.animation.pan({
+    duration: 2000,
+    easing: bounce,
+    source: /** @type {ol.Coordinate} */ (view.getCenter())
+  });
+  map.beforeRender(pan);
+  view.setCenter(joliet);
+  view.setZoom(12)
+},
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+mapStates.push({
+  name: "Petropolis",
+  transitionAction: function() {
+  var duration = 1000;
+  var start = +new Date();
+  var pan = ol.animation.pan({
+    duration: duration,
+    source: /** @type {ol.Coordinate} */ (view.getCenter()),
+    start: start
+  });
+  var bounce = ol.animation.bounce({
+    duration: duration,
+    resolution: 2 * view.getResolution(),
+    start: start
+  });
+  var rotate = ol.animation.rotate({
+    duration: duration,
+    rotation: -6 * Math.PI,
+    start: start
+  });
+  map.beforeRender(pan, bounce, rotate);
+  view.setCenter(petropolis);
+  view.setZoom(10);
+},
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+mapStates.push({
+  name: "Continental Network",
   transitionAction: function() {
     var pan = ol.animation.pan({
       duration: 1000,
       source: /** @type {ol.Coordinate} */ (view.getCenter())
     });
     map.beforeRender(pan);
-    view.setCenter(industrialzone);
-    view.setZoom(13);
+    view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
+    view.setZoom(16);
   },
   layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
 });
 
+mapStates.push({
+  name: "Bakken",
+  transitionAction: function() {
+  var duration = 2000;
+  var start = +new Date();
+  var pan = ol.animation.pan({
+    duration: duration,
+    source: /** @type {ol.Coordinate} */ (view.getCenter()),
+    start: start
+  });
+  var bounce = ol.animation.bounce({
+    duration: duration,
+    resolution: 4 * view.getResolution(),
+    start: start
+  });
+  map.beforeRender(pan, bounce);
+  view.setCenter(bakken);
+  view.setZoom(7);
+},
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
 
+mapStates.push({
+  name: "Tar Sands",
+  transitionAction: function() {
+    var duration = 2000;
+    var start = +new Date();
+    var pan = ol.animation.pan({
+      duration: duration,
+      source: /** @type {ol.Coordinate} */ (view.getCenter()),
+      start: start
+    });
+    var bounce = ol.animation.bounce({
+      duration: duration,
+      resolution: 4 * view.getResolution(),
+      start: start
+    });
+    map.beforeRender(pan, bounce);
+    view.setCenter(tarsands);
+    view.setZoom(17);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+mapStates.push({
+  name: "Continental Network",
+  transitionAction: function() {
+    var duration = 2000;
+    var start = +new Date();
+    var pan = ol.animation.pan({
+      duration: duration,
+      source: /** @type {ol.Coordinate} */ (view.getCenter()),
+      start: start
+    });
+    var bounce = ol.animation.bounce({
+      duration: duration,
+      resolution: 4 * view.getResolution(),
+      start: start
+    });
+    map.beforeRender(pan, bounce);
+    view.setCenter(northamerica);
+    view.setZoom(5);
+  },
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+mapStates.push({
+  name: "Gulf",
+  transitionAction: function() {
+  var duration = 2000;
+  var start = +new Date();
+  var pan = ol.animation.pan({
+    duration: duration,
+    source: /** @type {ol.Coordinate} */ (view.getCenter()),
+    start: start
+  });
+  var bounce = ol.animation.bounce({
+    duration: duration,
+    resolution: 4 * view.getResolution(),
+    start: start
+  });
+  map.beforeRender(pan, bounce);
+  view.setCenter(gulf);
+  view.setZoom(8);
+},
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+mapStates.push({
+  name: "World System",
+  transitionAction: function() {
+  var duration = 1000;
+  var start = +new Date();
+  var pan = ol.animation.pan({
+    duration: duration,
+    source: /** @type {ol.Coordinate} */ (view.getCenter()),
+    start: start
+  });
+  var bounce = ol.animation.bounce({
+    duration: duration,
+    resolution: 2 * view.getResolution(),
+    start: start
+  });
+  var rotate = ol.animation.rotate({
+    duration: duration,
+    rotation: -4 * Math.PI,
+    start: start
+  });
+  map.beforeRender(pan, bounce, rotate);
+  view.setCenter(world);
+  view.setZoom(3);
+},
+  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+});
+
+var navList = document.getElementById("navList");
+
+// generate map nav bar based on map states
+mapStates.map(function (mapState){
+  var li = document.createElement("li");
+  var a = document.createElement("a");
+  a.setAttribute("href", "#");
+  a.innerHTML = mapState.name;
+  li.appendChild(a);
+  navList.appendChild(li);
+  a.mapState = mapState;
+  // handle active map state
+  if (mapState == activeMapState) li.setAttribute("class", "active");
+});
+
+// enable navbar click logic - activate the link's mapState, call its transition action, and update layers.
+$(".nav a").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+   if (this.mapState){
+      setActiveMapState(this.mapState);
+   } 
+});
+
+function setActiveMapState(state){
+  activeMapState = state;
+  state.transitionAction();
+}
 
 var legendIcons = [];
 var prefix = "icons/";
@@ -783,6 +814,7 @@ legendIcons.push({iconPath: prefix + "airport.gif", label: "airports"});
 legendIcons.push({iconPath: prefix + "electricity.gif", label: "power plants"});
 
 var legend = document.getElementById("legend-basic");
+
 legendIcons.map(function(icon){
   var div = document.createElement("div");
   div.setAttribute("class", "checkbox legend-img-container");
@@ -819,11 +851,7 @@ $(document).ready(function(){
     });
 });
 
-// init map nav bar states
 
-mapStates.map(function (mapState){
-
-});
 
 /** Copied from openlayers template: https://jumpinjackie.github.io/bootstrap-viewer-template/2-column/index.html#
 **/
