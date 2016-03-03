@@ -130,6 +130,7 @@ tiles[0] = new ol.layer.Tile({
     url: "tiles2/{z}/{x}/{y}.png"}),
             maxResolution: 8000
 });
+tiles[0].name = "tiles2";
 
 tiles[1] = new ol.layer.Tile({
     source: new ol.source.Stamen({layer: 'watercolor'}),
@@ -137,6 +138,8 @@ tiles[1] = new ol.layer.Tile({
             minResolution: 0,
             maxResolution: 160
 });
+
+tiles[1].name = "watercolor";
 
 tiles[2] = new ol.layer.Tile({
     opacity: 0.8,
@@ -146,80 +149,43 @@ tiles[2] = new ol.layer.Tile({
             minResolution: 0,
             maxResolution: 160
 });
+tiles[2].name = "tiles";
 
 tiles[3] = new ol.layer.Tile({
     source: new ol.source.Stamen({layer: 'toner-lite'})
 });
 
+tiles[3].name="toner-lite";
+
 
 // Icons ----------------------------------
 
+// Note - Refactored a number of duplicate operations into this reusable function
+function makeGeoJSONVectorLayer(url, iconPath, label, minResolution, maxResolution){
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+      format: new ol.format.GeoJSON(),
+      url: url}),
+    minResolution: minResolution,
+    maxResolution: maxResolution,
+      style: new ol.style.Style({
+        image: new ol.style.Icon({
+          src: iconPath
+        })
+      })
+  });
+  layer.label = label;
+  layer.legendImgSrc = iconPath;
+  return layer;
+}
+
 var icons = [];
 
-icons[2] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'lib/MetroGenerators.geojson'}),
-            maxResolution: 160,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/electricity.gif'
-        }))
-    })
- });
-
-icons[3] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'lib/CalumetChemicals2.geojson'}),
-            minResolution: 0,
-            maxResolution: 20,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/chemical-industry.gif'
-        }))
-    })
- });
-
-icons[5] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'lib/CalumetRailyards.geojson'}),
-            minResolution: 0,
-            maxResolution: 20,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/Railroad.gif'
-        }))
-    })
- });
-
-icons[6] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'lib/CalumetSteelMills.geojson'}),
-            minResolution: 0,
-            maxResolution: 20,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/steelmill.gif'
-        }))
-    })
- });
-
-icons[7] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'lib/OpenPiles.geojson'}),
-            minResolution: 0,
-            maxResolution: 20,
-            updateWhileAnimating: true,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/piles.gif'
-        }))
-    })
- });
+icons[2] = makeGeoJSONVectorLayer('lib/MetroGenerators.geojson', 'icons/electricity.gif',"power plants", null, 160);
+icons[3] = makeGeoJSONVectorLayer('lib/CalumetChemicals2.geojson', 'icons/chemical-industry.gif', "chemicals", 0, 20);
+icons[5] = makeGeoJSONVectorLayer('lib/CalumetRailyards.geojson','icons/Railroad.gif',"rail yards", 0, 20);
+icons[6] = makeGeoJSONVectorLayer('lib/CalumetSteelMills.geojson','icons/steelmill.gif','steel mills', 0, 20);
+icons[7] = makeGeoJSONVectorLayer('lib/OpenPiles.geojson','icons/piles.gif','stockpiles',0, 20);
 
 
 var energy = [];
@@ -256,70 +222,17 @@ energy[1] = new ol.layer.Vector({
         })
         });
 
-energy[2] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/NArefineries.geojson'}),
-            minResolution: 1,
-            maxResolution: 8000,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/refinery-red.gif',
+energy[2] = makeGeoJSONVectorLayer('continent/NArefineries.geojson', 'icons/refinery-red.gif', 'refineries', 1, 8000);
 
-        }))
-    })
- });
+energy[4] = makeGeoJSONVectorLayer('continent/airport.geojson', 'icons/airport.gif', 'airports', 10, 160);
 
-energy[4] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/airport.geojson'}),
-            minResolution: 10,
-            maxResolution: 160,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/airport.gif'
-        }))
-    })
- });
 
-energy[5] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/Deepwater.geojson'}),
-            minResolution: 600,
-            maxResolution: 800,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'overlays/leak.png'
-        }))
-    })
-});
+energy[5] = makeGeoJSONVectorLayer('continent/Deepwater.geojson', 'overlays/leak.png', 'leaks', 600, 800);
 
-energy[6] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/OilHubs.geojson'}),
-            minResolution: 1,
-            maxResolution: 16000,
-            updateWhileAnimating: true,
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/OilTerminal.gif'
-        }))
-    })
-});
+// FIXME!!! Used to set updateWhileAnimating: true  - this is now false. Question - is this necessary?
+energy[6] = makeGeoJSONVectorLayer('continent/OilHubs.geojson', 'icons/OilTerminal.gif', 'oil hubs', 1, 16000);
 
-energy[9] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/GlobalRefineries3.geojson'}),
-        style: new ol.style.Style({
-        image: new ol.style.Icon(({
-            src: 'icons/refinery-red-sm.gif'
-        }))
-    })
-});
+energy[9] = makeGeoJSONVectorLayer('continent/GlobalRefineries3.geojson', 'icons/refinery-red-sm.gif', 'global refineries', null, null);
 
 energy[10] = new ol.layer.Vector({
           source: new ol.source.Vector({
@@ -487,8 +400,6 @@ var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
             info += props.EPA + '<br>';
             info += props.Notes;
 
-
-
 // Offset the popup so it points at the middle of the marker not the tip
 
         popup.setOffset([10, -15]);
@@ -570,7 +481,7 @@ var target = map.getTarget();
 var mapStates = [];
 
 // initialize this to the map state that is the starting point.
-var activeMapState = {
+var calumetState = {
   name: "Calumet Basin",
   transitionAction: function() {
     var pan = ol.animation.pan({
@@ -599,7 +510,8 @@ mapStates.push({
 });
 
 /** Calumet Basin State **/
-mapStates.push(activeMapState);
+mapStates.push(calumetState);
+setActiveMapState(calumetState);
 
 mapStates.push({
   name: "Joliet",
@@ -772,6 +684,7 @@ mapStates.push({
   layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
 });
 
+
 var navList = document.getElementById("navList");
 
 // generate map nav bar based on map states
@@ -799,57 +712,66 @@ $(".nav a").on("click", function(){
 function setActiveMapState(state){
   activeMapState = state;
   state.transitionAction();
+  // refresh list of layers
+  refreshLayers(state.layers);
 }
 
-var legendIcons = [];
+function refreshLayers(layers){
+  var legend = document.getElementById("legend-basic");
+  // clear existing legend div
+  while (legend.firstChild){
+    legend.removeChild(legend.firstChild);
+  }
+
+  var mapLayers = layers.map(function (layer){
+    if (layer.label){
+     var div = document.createElement("div");
+      div.setAttribute("class", "checkbox legend-img-container");
+      var label = document.createElement("label");
+      var input = document.createElement("input");
+      input.setAttribute("type", "checkbox");
+      input.layer = layer;
+      input.checked = true;
+
+      input.addEventListener("click", function() {
+        this.layer.setVisible(this.checked);
+      });
+      label.appendChild(input);
+
+      var img = document.createElement("img");
+      img.setAttribute("src", layer.legendImgSrc);
+      img.setAttribute("class", "legend-img");
+      label.appendChild(img);
+
+       var labelText = document.createElement("div");
+      labelText.setAttribute("class", "legend-text");
+
+      labelText.innerHTML = layer.label;
+      label.appendChild(labelText);
+
+      div.appendChild(label);
+
+      legend.appendChild(div);
+    }
+    
+  });
+
+   $("input[type='checkbox']")
+  
+}
+/*
+var mapLayers = [];
 var prefix = "icons/";
-legendIcons.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
-legendIcons.push({iconPath: prefix + "OilTerminal.gif", label: "oil hubs"});
-legendIcons.push({iconPath: prefix + "Railroad.gif", label: "rail yards"});
-legendIcons.push({iconPath: prefix + "piles.gif", label: "stockpiles"});
-legendIcons.push({iconPath: prefix + "steelmill.gif", label: "steel mills"});
-legendIcons.push({iconPath: prefix + "chemical-industry.gif", label: "chemicals"});
-legendIcons.push({iconPath: prefix + "star.gif", label: "gas stations"});
-legendIcons.push({iconPath: prefix + "airport.gif", label: "airports"});
-legendIcons.push({iconPath: prefix + "electricity.gif", label: "power plants"});
-
-var legend = document.getElementById("legend-basic");
-
-legendIcons.map(function(icon){
-  var div = document.createElement("div");
-  div.setAttribute("class", "checkbox legend-img-container");
-  var label = document.createElement("label");
-  label.setAttribute("style", "btn active");
-  var input = document.createElement("input");
-  input.setAttribute("type", "checkbox");
-  label.appendChild(input);
-
-  var img = document.createElement("img");
-  img.setAttribute("src", icon.iconPath);
-  img.setAttribute("class", "legend-img");
-  label.appendChild(img);
-
-   var labelText = document.createElement("div");
-  labelText.setAttribute("class", "legend-text");
-
-  labelText.innerHTML = icon.label;
-  label.appendChild(labelText);
-
-  div.appendChild(label);
-
-
-
-  legend.appendChild(div);
-
-});
-
-$(document).ready(function(){
-    $("input[type='checkbox']").change(function() {
-      if(this.checked) {
-          alert("checked: " + this.checked);
-      }
-    });
-});
+mapLayers.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
+mapLayers.push({iconPath: prefix + "OilTerminal.gif", label: "oil hubs"});
+mapLayers.push({iconPath: prefix + "Railroad.gif", label: "rail yards"});
+mapLayers.push({iconPath: prefix + "piles.gif", label: "stockpiles"});
+mapLayers.push({iconPath: prefix + "steelmill.gif", label: "steel mills"});
+mapLayers.push({iconPath: prefix + "chemical-industry.gif", label: "chemicals"});
+mapLayers.push({iconPath: prefix + "star.gif", label: "gas stations"});
+mapLayers.push({iconPath: prefix + "airport.gif", label: "airports"});
+mapLayers.push({iconPath: prefix + "electricity.gif", label: "power plants"});
+*/
 
 
 
