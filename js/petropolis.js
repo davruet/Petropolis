@@ -161,7 +161,7 @@ tiles[3].name="toner-lite";
 // Icons ----------------------------------
 
 // Note - Refactored a number of duplicate operations into this reusable function
-function makeGeoJSONVectorLayer(url, iconPath, label, minResolution, maxResolution){
+function makeGeoJSONPointVectorLayer(url, iconPath, label, minResolution, maxResolution){
   var layer = new ol.layer.Vector({
     source: new ol.source.Vector({
       format: new ol.format.GeoJSON(),
@@ -179,33 +179,39 @@ function makeGeoJSONVectorLayer(url, iconPath, label, minResolution, maxResoluti
   return layer;
 }
 
+function makeGeoJSONFillVectorLayer(url, label, minResolution, maxResolution, strokeColor, width, fillColor ){
+  var layer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+       format: new ol.format.GeoJSON(),
+             url: url}),
+            minResolution: minResolution,
+            maxResolution: maxResolution,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: strokeColor,
+            width: width
+          }),
+          fill: new ol.style.Fill({
+            color: fillColor
+          })
+        })
+        });
+  layer.label = label;
+  return layer;
+}
+
 var icons = [];
 
-icons[2] = makeGeoJSONVectorLayer('lib/MetroGenerators.geojson', 'icons/electricity.gif',"power plants", null, 160);
-icons[3] = makeGeoJSONVectorLayer('lib/CalumetChemicals2.geojson', 'icons/chemical-industry.gif', "chemicals", 0, 20);
-icons[5] = makeGeoJSONVectorLayer('lib/CalumetRailyards.geojson','icons/Railroad.gif',"rail yards", 0, 20);
-icons[6] = makeGeoJSONVectorLayer('lib/CalumetSteelMills.geojson','icons/steelmill.gif','steel mills', 0, 20);
-icons[7] = makeGeoJSONVectorLayer('lib/OpenPiles.geojson','icons/piles.gif','stockpiles',0, 20);
+icons[2] = makeGeoJSONPointVectorLayer('lib/MetroGenerators.geojson', 'icons/electricity.gif',"power plants", 0, 160);
+icons[3] = makeGeoJSONPointVectorLayer('lib/CalumetChemicals2.geojson', 'icons/chemical-industry.gif', "chemicals", 0, 20);
+icons[5] = makeGeoJSONPointVectorLayer('lib/CalumetRailyards.geojson','icons/Railroad.gif',"rail yards", 0, 20);
+icons[6] = makeGeoJSONPointVectorLayer('lib/CalumetSteelMills.geojson','icons/steelmill.gif','steel mills', 0, 20);
+icons[7] = makeGeoJSONPointVectorLayer('lib/OpenPiles.geojson','icons/piles.gif','stockpiles',0, 20);
 
 
 var energy = [];
 
-energy[0] = new ol.layer.Vector({
-          source: new ol.source.Vector({
-			 format: new ol.format.GeoJSON(),
-             url: 'continent/Bakken.geojson'}),
-            minResolution: 1,
-            maxResolution: 4000,
-        style: new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: 'rgba(134,82,63,0.4)',
-            width: 0.4
-          }),
-          fill: new ol.style.Fill({
-            color: 'rgba(134,82,63,0.4)'
-          })
-        })
-        });
+energy[0] = makeGeoJSONFillVectorLayer('continent/Bakken.geojson', "bakken", 1, 4000, 'rgba(134,82,63,0.4)', 0.4, 'rgba(134,82,63,0.4)');
 
 energy[1] = new ol.layer.Vector({
           source: new ol.source.Vector({
@@ -222,17 +228,17 @@ energy[1] = new ol.layer.Vector({
         })
         });
 
-energy[2] = makeGeoJSONVectorLayer('continent/NArefineries.geojson', 'icons/refinery-red.gif', 'refineries', 1, 8000);
+energy[2] = makeGeoJSONPointVectorLayer('continent/NArefineries.geojson', 'icons/refinery-red.gif', 'refineries', 1, 8000);
 
-energy[4] = makeGeoJSONVectorLayer('continent/airport.geojson', 'icons/airport.gif', 'airports', 10, 160);
+energy[4] = makeGeoJSONPointVectorLayer('continent/airport.geojson', 'icons/airport.gif', 'airports', 10, 160);
 
 
-energy[5] = makeGeoJSONVectorLayer('continent/Deepwater.geojson', 'overlays/leak.png', 'leaks', 600, 800);
+energy[5] = makeGeoJSONPointVectorLayer('continent/Deepwater.geojson', 'overlays/leak.png', 'leaks', 600, 800);
 
 // FIXME!!! Used to set updateWhileAnimating: true  - this is now false. Question - is this necessary?
-energy[6] = makeGeoJSONVectorLayer('continent/OilHubs.geojson', 'icons/OilTerminal.gif', 'oil hubs', 1, 16000);
+energy[6] = makeGeoJSONPointVectorLayer('continent/OilHubs.geojson', 'icons/OilTerminal.gif', 'oil hubs', 1, 16000);
 
-energy[9] = makeGeoJSONVectorLayer('continent/GlobalRefineries3.geojson', 'icons/refinery-red-sm.gif', 'global refineries', null, null);
+energy[9] = makeGeoJSONPointVectorLayer('continent/GlobalRefineries3.geojson', 'icons/refinery-red-sm.gif', 'global refineries', 0, 16000);
 
 energy[10] = new ol.layer.Vector({
           source: new ol.source.Vector({
@@ -279,6 +285,8 @@ energy[12] = new ol.layer.Vector({
         })
         });
 
+var superfund = makeGeoJSONFillVectorLayer('extras/Superfund.geojson', 'superfund', 0.25, 4000, 'black', 0.6, 'rgba(236, 23, 229, 0.4)');
+superfund.legendImgSrc = 'icons/piles.gif'; // FIXME - this is not the right icon.
 //overlays -------------------------------
 
 var overlay = [];
@@ -362,7 +370,7 @@ var map = new ol.Map({
     new ol.control.FullScreen()
  ]),
 
-    layers: [ tiles[3], burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+    layers: [ energy[4], tiles[3], burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
 
   // Improve user experience by loading tiles while animating. Will make
   // animations stutter on mobile or slow devices.
@@ -478,7 +486,40 @@ var target = map.getTarget();
             }
         });
 
+
+
+/*****************
+    MAP STATES
+******************/
 var mapStates = [];
+
+
+// default layers -- individual map states may use a different set of layers.
+var defaultLayers = [ burnoff,
+    energy[9],
+    energy[10],
+    energy[1], 
+    tiles[1], 
+    tiles[2], 
+    overlay[1], 
+    energy[0], 
+    energy[11], 
+    icons[2], 
+    overlay[0], 
+    photoset[0], 
+    icons[7], 
+    energy[12], 
+    //energy[2],  (excluded, already covered by global refineries?)
+    energy[6], 
+    burnoff, 
+    energy[5], 
+    bingMapsAerial, 
+    icons[3], 
+    icons[5], 
+    icons[6], 
+    photoset[1], 
+    photoset[2], 
+    oilrig ];
 
 // initialize this to the map state that is the starting point.
 var calumetState = {
@@ -492,7 +533,8 @@ var calumetState = {
     view.setCenter(industrialzone);
     view.setZoom(13);
   },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: [ energy[2], energy[6], icons[5], energy[4], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], burnoff, bingMapsAerial, icons[3], icons[6], photoset[1], photoset[2], oilrig ],
+  extraLayers: [superfund]
 } 
 
 mapStates.push({
@@ -506,7 +548,7 @@ mapStates.push({
     view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
     view.setZoom(16);
   },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+ layers: defaultLayers
 });
 
 /** Calumet Basin State **/
@@ -516,16 +558,16 @@ setActiveMapState(calumetState);
 mapStates.push({
   name: "Joliet",
   transitionAction: function() {
-  var pan = ol.animation.pan({
-    duration: 2000,
-    easing: bounce,
-    source: /** @type {ol.Coordinate} */ (view.getCenter())
-  });
-  map.beforeRender(pan);
-  view.setCenter(joliet);
-  view.setZoom(12)
-},
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+    var pan = ol.animation.pan({
+      duration: 2000,
+      easing: bounce,
+      source: /** @type {ol.Coordinate} */ (view.getCenter())
+    });
+    map.beforeRender(pan);
+    view.setCenter(joliet);
+    view.setZoom(12)
+  },
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -552,7 +594,7 @@ mapStates.push({
   view.setCenter(petropolis);
   view.setZoom(10);
 },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -566,7 +608,7 @@ mapStates.push({
     view.setCenter(ol.proj.fromLonLat([-87.4820, 41.66950]));
     view.setZoom(16);
   },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -588,7 +630,7 @@ mapStates.push({
   view.setCenter(bakken);
   view.setZoom(7);
 },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -610,7 +652,7 @@ mapStates.push({
     view.setCenter(tarsands);
     view.setZoom(17);
   },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -632,7 +674,7 @@ mapStates.push({
     view.setCenter(northamerica);
     view.setZoom(5);
   },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -654,7 +696,7 @@ mapStates.push({
   view.setCenter(gulf);
   view.setZoom(8);
 },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 mapStates.push({
@@ -681,7 +723,7 @@ mapStates.push({
   view.setCenter(world);
   view.setZoom(3);
 },
-  layers: [ burnoff, energy[9], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], energy[2], energy[6], burnoff, energy[5], bingMapsAerial, icons[3], icons[5], icons[6], photoset[1], photoset[2], oilrig ],
+  layers: defaultLayers
 });
 
 
@@ -713,18 +755,27 @@ function setActiveMapState(state){
   activeMapState = state;
   state.transitionAction();
   // refresh list of layers
-  refreshLayers(state.layers);
+  var legendBasic = document.getElementById("legend-basic");
+  var legendExtras = document.getElementById("legend-extras")
+  refreshLayers(state.layers, legendBasic);
+  refreshLayers(state.extraLayers, legendExtras);
 }
 
-function refreshLayers(layers){
-  var legend = document.getElementById("legend-basic");
+/** Create layer legend + icon _+ checkbox for each layer that has a label and legendImgSrc property.
+**/
+function refreshLayers(layers, legendElement){
+  
   // clear existing legend div
-  while (legend.firstChild){
-    legend.removeChild(legend.firstChild);
+  while (legendElement.firstChild){
+    legendElement.removeChild(legendElement.firstChild);
   }
 
+  //legendElement.parentNode.parentNode.visible = layers != null; FIXME - make node invisible if there are no layers.
+
+  if (!layers) return;
+
   var mapLayers = layers.map(function (layer){
-    if (layer.label){
+    if (layer.label && layer.legendImgSrc){
      var div = document.createElement("div");
       div.setAttribute("class", "checkbox legend-img-container");
       var label = document.createElement("label");
@@ -751,12 +802,12 @@ function refreshLayers(layers){
 
       div.appendChild(label);
 
-      legend.appendChild(div);
+      legendElement.appendChild(div);
     }
     
   });
 
-   $("input[type='checkbox']")
+   //$("input[type='checkbox']")
   
 }
 /*
