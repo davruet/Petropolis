@@ -208,6 +208,24 @@ icons[5] = makeGeoJSONPointVectorLayer('lib/CalumetRailyards.geojson','icons/Rai
 icons[6] = makeGeoJSONPointVectorLayer('lib/CalumetSteelMills.geojson','icons/steelmill.gif','steel mills', 0, 20);
 icons[7] = makeGeoJSONPointVectorLayer('lib/OpenPiles.geojson','icons/piles.gif','stockpiles',0, 20);
 
+/** Example of how to specify a layer - including properties 'label' and 'legendImgSrc':
+*/
+icons[8] = icons[8] = new ol.layer.Vector({
+          source: new ol.source.Vector({
+                         format: new ol.format.KML({extractStyles: false}),
+             url: 'lib/TRI.kml'}),
+            minResolution: 0,
+            maxResolution: 40,
+            updateWhileAnimating: true,
+        style: new ol.style.Style({
+        image: new ol.style.Icon(({
+            src: 'icons/gas-mask.gif'
+        }))
+    })
+ });
+icons[8].label = "toxics release inventory"
+icons[8].legendImgSrc = 'icons/gas-mask.gif';
+
 
 var energy = [];
 
@@ -534,7 +552,7 @@ var calumetState = {
     view.setZoom(13);
   },
   layers: [ energy[2], energy[6], icons[5], energy[4], energy[10], energy[1], tiles[1], tiles[2], overlay[1], energy[0], energy[11], icons[2], overlay[0], photoset[0], icons[7], energy[12], burnoff, bingMapsAerial, icons[3], icons[6], photoset[1], photoset[2], oilrig ],
-  extraLayers: [superfund]
+  extraLayers: [superfund, icons[8]]
 } 
 
 mapStates.push({
@@ -753,6 +771,23 @@ $(".nav a").on("click", function(){
 
 function setActiveMapState(state){
   activeMapState = state;
+
+  // reset map's current layers
+  if (map.layers){
+    for (var i = map.layers.length - 1; i >= 0; i--) { 
+        map.removeLayer(map.layers[i]); 
+    }     
+  }
+  for (var i = 0; i < state.layers.length; i++){
+    map.addLayer(state.layers[i]);
+  }
+
+  if (state.extraLayers){
+    for (var i = 0; i < state.extraLayers.length; i++){
+      map.addLayer(state.extraLayers[i]);
+    }
+  }
+
   state.transitionAction();
   // refresh list of layers
   var legendBasic = document.getElementById("legend-basic");
@@ -828,7 +863,7 @@ mapLayers.push({iconPath: prefix + "electricity.gif", label: "power plants"});
 
 /** Copied from openlayers template: https://jumpinjackie.github.io/bootstrap-viewer-template/2-column/index.html#
 **/
-
+/*
 function applyMargins() {
     var leftToggler = $(".mini-submenu-left");
     if (leftToggler.is(":visible")) {
@@ -887,4 +922,4 @@ function applyMargins() {
     });
     applyInitialUIState();
     applyMargins();
-  });
+  });*/
