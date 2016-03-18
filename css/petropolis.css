@@ -10,7 +10,7 @@ body {
 /** Navbar link style **/
 .navbar-default .navbar-nav > li > a {
     color: #db0000;
-    font-weight: bold;
+    font-weight: bold; font-size: 120%;
 
 }
 
@@ -21,11 +21,11 @@ body {
 #accordion-container
 {
     position:absolute; 
-    left:0px; 
+    right:0px; 
     bottom:0px; 
     margin:0px;
     z-index:10000; 
-    width:190px; 
+    width:200px; 
 }
 
 .panel-group {
@@ -43,7 +43,7 @@ body {
   height: 20px;
 }
 .legend-text {
-  padding: 3px 10px;
+  padding: 3px 7px;
   display: inline;
 }
 
@@ -86,4 +86,8 @@ body {
   padding: 0 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.petropolis-gallery a {
+  padding: 10px;
 }
