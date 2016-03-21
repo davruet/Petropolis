@@ -1,4 +1,21 @@
 
+var mapExtent = ol.proj.transformExtent([-89.15,41.215,-86.4,42.37], 'EPSG:4326', 'EPSG:3857');
+var NAExtent = ol.proj.transformExtent([-167.2764,5.4995,-52.2330,83.1621], 'EPSG:4326', 'EPSG:3857');
+var refinery = ol.proj.fromLonLat([-87.4820, 41.66950]);
+var toxicwaste = ol.proj.fromLonLat([-87.5439, 41.7049]);
+var industrialzone = ol.proj.fromLonLat([-87.534, 41.68432]);
+var joliet = ol.proj.fromLonLat([-88.184191, 41.415955]);
+var citgo = ol.proj.fromLonLat([-88.054394, 41.645987]);
+var petropolis = ol.proj.fromLonLat([-87.8, 41.750832]);
+var bakken = ol.proj.fromLonLat([-102.5903, 47.6030]);
+var northamerica = ol.proj.fromLonLat([-95.2128, 39.8]);
+var tarsands = ol.proj.fromLonLat([-111.5663, 57.2391]);
+var gulf = ol.proj.fromLonLat([-90.0891, 28.9149]);
+var world = ol.proj.fromLonLat([-25, 23]);
+
+
+
+/** Animation functions **/
 
 function bounce(t) {
 	var s = 7.5625, p = 2.75, l;
@@ -22,38 +39,12 @@ function bounce(t) {
 }
 
 
-/*
-legend.expanded = false;
-
-legend.addEventListener("click", function(e){
-  legend.expanded = !legend.expanded;
-  if (legend.expanded){
-    legend.style.width = "130px";
-  } else {
-    legend.style.width = "60px";
-  }
-  alert("EVENT!!");
-
-});*/
-
-
 function elastic(t) {
 	return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
 }
 
-var mapExtent = ol.proj.transformExtent([-89.15,41.215,-86.4,42.37], 'EPSG:4326', 'EPSG:3857');
-var NAExtent = ol.proj.transformExtent([-167.2764,5.4995,-52.2330,83.1621], 'EPSG:4326', 'EPSG:3857');
-var refinery = ol.proj.fromLonLat([-87.4820, 41.66950]);
-var toxicwaste = ol.proj.fromLonLat([-87.5439, 41.7049]);
-var industrialzone = ol.proj.fromLonLat([-87.534, 41.68432]);
-var joliet = ol.proj.fromLonLat([-88.184191, 41.415955]);
-var citgo = ol.proj.fromLonLat([-88.054394, 41.645987]);
-var petropolis = ol.proj.fromLonLat([-87.8, 41.750832]);
-var bakken = ol.proj.fromLonLat([-102.5903, 47.6030]);
-var northamerica = ol.proj.fromLonLat([-95.2128, 39.8]);
-var tarsands = ol.proj.fromLonLat([-111.5663, 57.2391]);
-var gulf = ol.proj.fromLonLat([-90.0891, 28.9149]);
-var world = ol.proj.fromLonLat([-25, 23]);
+
+
 
 var view = new ol.View({
   // the view's initial state
