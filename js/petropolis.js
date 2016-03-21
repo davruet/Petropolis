@@ -195,9 +195,11 @@ function makeGeoJSONFillVectorLayer(url, label, minResolution, maxResolution, st
 			fill: new ol.style.Fill({
 				color: fillColor
 			})
-		})
+		}),
+		fill: fillColor
 	});
 	layer.label = label;
+	layer.fillColor = fillColor;
 	return layer;
 }
 
@@ -328,6 +330,7 @@ energy[12] = new ol.layer.Vector({
 		})
 	})
 });
+energy[12].label = 'gulf pipelines';
 
 energy[13] = makeGeoJSONPointVectorLayer('continent/XXX.geojson', 'icons/NARR.gif', 'railroads', 1, 8000);
 energy[14] = makeGeoJSONPointVectorLayer('continent/XXX.geojson', 'icons/BlastZone.gif', 'bomb trains', 1, 8000);
@@ -365,6 +368,7 @@ overlay[1] = new ol.layer.Vector({
 		}))
 	})
 });
+overlay[1].label = 'bomb train';
 
 //contributors ---------------------------------
 
@@ -402,119 +406,42 @@ map.on('singleclick', function(evt) {
 	popup.setOffset([0, 0]);
 
 
-	function makeGallery(options){
-		var maxImages = 4; // Default of 10 for max images.
-		if (options.maxImages) maxImages = options.maxImages;
-		options = options || {};
-		var container = document.createElement("div");
-		container.setAttribute("id", "lightgallery");
-		container.setAttribute("class", "petropolis-gallery row");
-		var images = options.images;
+	// Attempt to find a feature in one of the visible vector layers --
 
-		var i = 0;
-
-		var galleryData = images.map(function (image){
-			var a = document.createElement("a");
-			a.setAttribute("class", "col-sm-6");
-			
-			var img = document.createElement("img");
-			img.setAttribute("class","img-responsive");
-			a.setAttribute("href", image.src);
-		 
-		    img.setAttribute("src", image.thumb);
-		    a.appendChild(img);
-
-		    /*var captionID = "caption" + i++;
-			a.setAttribute("data-sub-html", "#" + captionID);
-			var caption = document.createElement("div");
-			caption.setAttribute("id", captionID);
-			caption.innerHTML = "Some sample caption.";
-			caption.setAttribute("style", "display:none");*/
-
-			//container.appendChild(caption);
-			if (img.caption) a.setAttribute("data-sub-html", img.caption);
-
-			if (i++ >= maxImages){
-				a.setAttribute("style", "display:none");
-			}
-		    container.appendChild(a);
-
-		    //return [caption,a];
-		});
-/*
-		galleryData.map(function(item){
-			container.appendChild(item[0]);
-		});
-		galleryData.map(function(item){
-			container.appendChild(item[1]);
-		});*/
-
-
-
-		return container;
-
-	}
-
-// Attempt to find a feature in one of the visible vector layers --
-
-var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
-	return feature;
-});
-
-if (feature) {
-
-	var coord = feature.getGeometry().getCoordinates();
-	var props = feature.getProperties();
-	var info;
-
-	if (props.images){
-		/*
-		var gallery = makeGallery(props);
-		$(gallery).lightGallery({
-			thumbnail: true
-		});
-		var container = document.createElement("div");
-		var h4 = document.createElement("h4");
-		h4.innerHTML = props.Name;
-		container.appendChild(h4);
-		container.appendChild(gallery);
-
-		info = container;*/
-		 $(this).lightGallery({
-	        dynamic: true,
-	        dynamicEl: props.images
-	        });
-
-	} else {
-		info = "<h4>" + props.Name + "</h4>";
-		info += props.Image;
-		info += props.website + '<br>';
-		info += props.EPA + '<br>';
-		info += props.Notes;
-	}
-
-	// Offset the popup so it points at the middle of the marker not the tip
-
-	popup.setOffset([10, -15]);
-	popup.show(coord, info);
-
-	$(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {
-		event.preventDefault();
-		return $(this).ekkoLightbox({
-			onShown: function() {
-				if (window.console) {
-					return console.log('Checking our the events huh?');
-				}
-			},
-			onNavigate: function(direction, itemIndex) {
-				if (window.console) {
-					return console.log('Navigating '+direction+'. Current item: '+itemIndex);
-				}
-			}
-		});
+	var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+		return feature;
 	});
 
-}
+	if (feature) {
+
+		var coord = feature.getGeometry().getCoordinates();
+		var props = feature.getProperties();
+		var info;
+
+		if (props.images){
+			 $(this).lightGallery({
+		        dynamic: true,
+		        thumbnail	: false,
+		        dynamicEl: props.images,
+		        autoplay: true,
+		        pause: 5000 // autoplay slide time
+		        });
+
+		} else {
+			info = "<h4>" + props.Name + "</h4>";
+			info += props.Image;
+			info += props.website + '<br>';
+			info += props.EPA + '<br>';
+			info += props.Notes;
+		}
+
+		// Offset the popup so it points at the middle of the marker not the tip
+
+		popup.setOffset([10, -15]);
+		popup.show(coord, info);
+
+
+	}
 });
 
 
@@ -755,7 +682,7 @@ mapStates.push({
 		view.setCenter(bakken);
 		view.setZoom(7);
 	},
-	layers: [ energy[1], energy[13], energy[6], icons[2], energy[2], energy[3], bingMapsAerial ]
+	layers: [ energy[1], energy[13], energy[6], icons[2], energy[2], energy[3], energy[0], bingMapsAerial ]
 });
 
 mapStates.push({
@@ -895,24 +822,39 @@ function refreshLayers(layers, legendElement){
   if (!layers) return;
 
   var mapLayers = layers.map(function (layer){
-  	if (layer.label && layer.legendImgSrc){
+  	if (layer.label ){
   		var div = document.createElement("div");
   		div.setAttribute("class", "checkbox legend-img-container");
   		var label = document.createElement("label");
   		var input = document.createElement("input");
   		input.setAttribute("type", "checkbox");
   		input.layer = layer;
-  		input.checked = true;
+  		input.checked = layer.getVisible();
 
   		input.addEventListener("click", function() {
   			this.layer.setVisible(this.checked);
   		});
   		label.appendChild(input);
 
-  		var img = document.createElement("img");
-  		img.setAttribute("src", layer.legendImgSrc);
-  		img.setAttribute("class", "legend-img");
-  		label.appendChild(img);
+  		// make the legend icon - image icon, or if a fill layer, make an SVG element.
+  		if (layer.legendImgSrc){
+	  		var img = document.createElement("img");
+	  		img.setAttribute("src", layer.legendImgSrc);
+	  		img.setAttribute("class", "legend-img");
+	  		label.appendChild(img);
+	  	} /** SVG auto-generate icon not yet supported - display bug
+	  	else if (layer.fillColor) {
+	  		var svgns = "http://www.w3.org/2000/svg";
+	  		var svg = document.createElement("svg");
+	  		svg.setAttribute("height", "16");
+	  		svg.setAttribute("width", "16");
+	  		var square = document.createElementNS(svgns, "rect");
+	  		square.setAttribute("width", "16");
+	  		square.setAttribute("height", "16");
+	  		square.setAttribute("style", "fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)");
+	  		svg.appendChild(square);
+	  		label.appendChild(svg);
+	  	}**/
 
   		var labelText = document.createElement("div");
   		labelText.setAttribute("class", "legend-text");
@@ -930,158 +872,3 @@ function refreshLayers(layers, legendElement){
    //$("input[type='checkbox']")
 
 }
-
-/* Lightbox */
-
-$(document).ready(function ($) {
-    // delegate calls to data-toggle="lightbox"
-    $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {
-    	event.preventDefault();
-    	return $(this).ekkoLightbox({
-    		onShown: function() {
-    			if (window.console) {
-    				return console.log('Checking our the events huh?');
-    			}
-    		},
-    		onNavigate: function(direction, itemIndex) {
-    			if (window.console) {
-    				return console.log('Navigating '+direction+'. Current item: '+itemIndex);
-    			}
-    		}
-    	});
-    });
-    
-// navigateTo
-$(document).delegate('*[data-gallery="navigateTo"]', 'click', function(event) {
-	event.preventDefault();
-	var lb;
-	return $(this).ekkoLightbox({
-		onShown: function() {
-			lb = this;
-			$(lb.modal_content).on('click', '.modal-footer a', function(e) {
-				e.preventDefault();
-				lb.navigateTo(2);
-			});
-		}
-	});
-});
-});
-
-/** Popup */
-
-// var container = document.getElementById('popup');
-// var content = document.getElementById('popup-content');
-// var closer = document.getElementById('popup-closer');
-
-
-  /**
-   * Create an overlay to anchor the popup to the map.
-   */
-  // var popupOverlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-  //   element: container,
-  //   autoPan: true,
-  //   autoPanAnimation: {
-  //     duration: 250
-  //   }
-  // }));
-
-   /**
-   * Add a click handler to hide the popup.
-   * @return {boolean} Don't follow the href.
-   */
-  // closer.onclick = function() {
-  //   popupOverlay.setPosition(undefined);
-  //   closer.blur();
-  //   return false;
-  // };
-
-  // map.addOverlay(popupOverlay);
-  // map.on('singleclick', function(evt) {
-  //     var coordinate = evt.coordinate;
-  //     var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
-  //         coordinate, 'EPSG:3857', 'EPSG:4326'));
-
-  //     content.innerHTML = '<p>You clicked here:</p><code>' + hdms +
-  //         '</code>';
-  //     popupOverlay.setPosition(coordinate);
-  //   });
-
-
-/*
-var mapLayers = [];
-var prefix = "icons/";
-mapLayers.push({iconPath: prefix + "refinery-red.gif", label: "refineries"});
-mapLayers.push({iconPath: prefix + "OilTerminal.gif", label: "oil hubs"});
-mapLayers.push({iconPath: prefix + "Railroad.gif", label: "rail yards"});
-mapLayers.push({iconPath: prefix + "piles.gif", label: "stockpiles"});
-mapLayers.push({iconPath: prefix + "steelmill.gif", label: "steel mills"});
-mapLayers.push({iconPath: prefix + "chemical-industry.gif", label: "chemicals"});
-mapLayers.push({iconPath: prefix + "star.gif", label: "gas stations"});
-mapLayers.push({iconPath: prefix + "airport.gif", label: "airports"});
-mapLayers.push({iconPath: prefix + "electricity.gif", label: "power plants"});
-*/
-
-
-
-/** Copied from openlayers template: https://jumpinjackie.github.io/bootstrap-viewer-template/2-column/index.html#
-**/
-/*
-function applyMargins() {
-    var leftToggler = $(".mini-submenu-left");
-    if (leftToggler.is(":visible")) {
-      $("#map .ol-zoom")
-        .css("margin-left", 0)
-        .removeClass("zoom-top-opened-sidebar")
-        .addClass("zoom-top-collapsed");
-    } else {
-      $("#map .ol-zoom")
-        .css("margin-left", $(".sidebar-left").width())
-        .removeClass("zoom-top-opened-sidebar")
-        .removeClass("zoom-top-collapsed");
-    }
-  }
-
-  function isConstrained() {
-    return $(".sidebar").width() == $(window).width();
-  }
-
-  function applyInitialUIState() {
-    if (isConstrained()) {
-      $(".sidebar-left .sidebar-body").fadeOut('slide');
-      $('.mini-submenu-left').fadeIn();
-    }
-  }
-
-  $(function(){
-    $('.sidebar-left .slide-submenu').on('click',function() {
-      var thisEl = $(this);
-      thisEl.closest('.sidebar-body').fadeOut('slide',function(){
-        $('.mini-submenu-left').fadeIn();
-        applyMargins();
-      });
-    });
-
-    $('.mini-submenu-left').on('click',function() {
-      var thisEl = $(this);
-      $('.sidebar-left .sidebar-body').toggle('slide');
-      thisEl.hide();
-      applyMargins();
-    });
-
-    $(window).on("resize", applyMargins);
-
-    var map = new ol.Map({
-      target: "map",
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: [0, 0],
-        zoom: 2
-      })
-    });
-    applyInitialUIState();
-    applyMargins();
-});*/
