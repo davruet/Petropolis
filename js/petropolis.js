@@ -211,6 +211,8 @@ icons[5] = makeGeoJSONPointVectorLayer('lib/CalumetRailyards.geojson','icons/Rai
 icons[6] = makeGeoJSONPointVectorLayer('lib/CalumetSteelMills.geojson','icons/steelmill.gif','steel mills', 0, 20);
 icons[7] = makeGeoJSONPointVectorLayer('lib/OpenPiles.geojson','icons/piles.gif','stockpiles',0, 20);
 icons[8] = makeGeoJSONPointVectorLayer('lib/TRI.geojson','icons/TRI.gif','toxics release',0, 80);
+// Hide Toxics Release layer by default.
+icons[8].setVisible(false);
 
 /** Example of how to specify a layer - including properties 'label' and 'legendImgSrc':
 */
@@ -414,7 +416,6 @@ map.on('singleclick', function(evt) {
 
 	if (feature) {
 
-		var coord = feature.getGeometry().getCoordinates();
 		var props = feature.getProperties();
 		var info;
 
@@ -437,8 +438,8 @@ map.on('singleclick', function(evt) {
 
 		// Offset the popup so it points at the middle of the marker not the tip
 
-		popup.setOffset([10, -15]);
-		popup.show(coord, info);
+		//popup.setOffset([10, -15]);
+		popup.show(map.getCoordinateFromPixel(evt.pixel), info);
 
 
 	}
