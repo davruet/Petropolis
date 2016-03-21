@@ -468,6 +468,7 @@ if (feature) {
 	var info;
 
 	if (props.images){
+		/*
 		var gallery = makeGallery(props);
 		$(gallery).lightGallery({
 			thumbnail: true
@@ -478,7 +479,11 @@ if (feature) {
 		container.appendChild(h4);
 		container.appendChild(gallery);
 
-		info = container;
+		info = container;*/
+		 $(this).lightGallery({
+	        dynamic: true,
+	        dynamicEl: props.images
+	        });
 
 	} else {
 		info = "<h4>" + props.Name + "</h4>";
