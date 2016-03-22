@@ -416,6 +416,12 @@ map.on('singleclick', function(evt) {
 		        thumbnail	: false,
 		        dynamicEl: props.images,
 		        autoplay: true,
+
+		        loadYoutubeThumbnail: true,
+			    youtubeThumbSize: 'default',
+			    loadVimeoThumbnail: true,
+			    vimeoThumbSize: 'thumbnail_medium',
+		        
 		        pause: 5000 // autoplay slide time
 		        });
 
@@ -425,14 +431,11 @@ map.on('singleclick', function(evt) {
 			info += props.website + '<br>';
 			info += props.EPA + '<br>';
 			info += props.Notes;
+					// Offset the popup so it points at the middle of the marker not the tip
+
+			//popup.setOffset([10, -15]);
+			popup.show(map.getCoordinateFromPixel(evt.pixel), info);
 		}
-
-		// Offset the popup so it points at the middle of the marker not the tip
-
-		//popup.setOffset([10, -15]);
-		popup.show(map.getCoordinateFromPixel(evt.pixel), info);
-
-
 	}
 });
 
@@ -674,7 +677,7 @@ mapStates.push({
 		view.setCenter(bakken);
 		view.setZoom(7);
 	},
-	layers: [ energy[1], energy[13], energy[6], icons[2], energy[2], energy[3], energy[0], bingMapsAerial ]
+	layers: [ energy[0], energy[1], energy[13], energy[6], icons[2], energy[2], energy[3], bingMapsAerial ]
 });
 
 mapStates.push({
