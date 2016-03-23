@@ -413,7 +413,7 @@ map.on('singleclick', function(evt) {
 		if (props.images){
 			var $lg = $("#lightGallery");
 			
-			var returnedVal = $lg.lightGallery({
+			$lg.lightGallery({
 		        dynamic: true,
 		        thumbnail	: false,
 		        dynamicEl: props.images,
