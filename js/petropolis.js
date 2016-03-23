@@ -411,7 +411,9 @@ map.on('singleclick', function(evt) {
 		var info;
 
 		if (props.images){
-			 $(this).lightGallery({
+			var $lg = $("#lightGallery");
+			
+			var returnedVal = $lg.lightGallery({
 		        dynamic: true,
 		        thumbnail	: false,
 		        dynamicEl: props.images,
@@ -424,6 +426,9 @@ map.on('singleclick', function(evt) {
 		        
 		        pause: 5000 // autoplay slide time
 		        });
+			 $lg.on('onCloseAfter.lg', function(event){
+			 	$lg.data('lightGallery').destroy(true);
+			 });
 
 		} else {
 			info = "<h4>" + props.Name + "</h4>";

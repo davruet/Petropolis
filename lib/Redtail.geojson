@@ -27,6 +27,7 @@
 	{"src": "Galleries/BP_files/vlb_images1/7.BP Refinery, 2015.jpg",
 	"thumb": "Galleries/BP_files/vlb_thumbnails1/7.BP Refinery, 2015.jpg",
 	"subHtml": "BP Refinery, 2015"}
+
 ],
 "Image": "<a href='Galleries/KCBX2.html'><img src='images/Conveyors.jpg'></a><br>photos by Terry Evans<br>", 
 "website": "<h4>click image for slideshow</h4>", 
@@ -36,10 +37,16 @@
 
 { "type": "Feature", "properties": { "Name": "BP Refinery, Whiting, IN",
 "popupURL": "galleries/BP.html",
-"Image": "<a href='Galleries/BP.html'><img src='images/BP Refinery.jpg'></a><br>photos by Terry Evans<br>", 
+"images":[
+
+	{"src": "Galleries/BP_files/vlb_images1/1.BP Refinery, Nov. 2014.jpg",
+	"thumb": "Galleries/BP_files/vlb_thumbnails1/1.BP Refinery, Nov. 2014.jpg",
+	"subHtml": "BP Refinery, Nov. 2014"}
+],
 "website": "<h4>click image for slideshow</h4>", 
 "EPA": "", 
 "Notes": "" }, 
 "geometry": { "type": "Point", "coordinates": [ -87.478676, 41.670768 ] } }
 ]
 }
+
